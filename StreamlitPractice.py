@@ -18,13 +18,12 @@ def play_librosa_audio(y, sr):
     # Use st.audio to display the audio player
     st.audio(audio_buffer, format='audio/wav')
 #
-def show_waveform(y, sr):
-    # Plot waveform
-    plt.figure(figsize=(10, 4))
-    librosa.display.waveshow(y, sr=sr)
-    plt.title('Waveform')
-    plt.xlabel('Time')
-    plt.ylabel('Amplitude')
+def show_waveform(audio, sr):
+
+    fig, ax = plt.subplots()
+    time = lr.samples_to_time(range(len(audio)), sr=sr)
+    ax.plot(time, audio)
+    ax.set(xlabel = 'Time (s)', ylabel = 'Sound Amplitude')
     plt.tight_layout()
     # Show plot in Streamlit
     st.pyplot(plt)
