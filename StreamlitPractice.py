@@ -27,8 +27,9 @@ if uploaded_file is not None:
     audio_length = lr.get_duration(y = audio_mono, sr=sr)
 
     #How long is the audio
-    st.write("Length of Audio (Seconds): ", audio_length)
+    st.write("Length of Audio (Seconds): " + str((round(audio_length),2)))
 
+"""
     # Plotting the waveform
     S = lr.feature.melspectrogram(y = audio_mono, sr=sr)
     
@@ -42,7 +43,7 @@ if uploaded_file is not None:
     plt.title('Mel-scaled spectrogram')
     plt.tight_layout()
     st.pyplot(plt)
-
+"""
 # Subheader 적용
 st.subheader('이것은 subheader 입니다')
 
