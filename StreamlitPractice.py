@@ -27,7 +27,7 @@ if uploaded_file is not None:
     audio_length = lr.get_duration(y = audio_mono, sr=sr)
 
     #How long is the audio
-    st.write("Length of Audio (Seconds): " + str((round(audio_length),2)))
+    st.write("Length of Audio (Seconds): " + str(round(audio_length) +"seconds." )
 
 """
     # Plotting the waveform
