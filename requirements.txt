@@ -4,3 +4,4 @@ soundfile
 matplotlib
 pydub
 IPython.display
+io
