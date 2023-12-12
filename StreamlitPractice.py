@@ -16,7 +16,7 @@ def play_librosa_audio(y, sr):
     audio_buffer = io.BytesIO()
     sf.write(audio_buffer, y, sr, format='WAV')
     audio_buffer.seek(0)
-
+    st.write("ARE WE HERE" )
     # Use st.audio to display the audio player
     st.audio(audio_buffer, format='audio/wav')
 #
