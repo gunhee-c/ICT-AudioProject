@@ -62,15 +62,17 @@ st.title('MBTI AUDIO EFFECTOR PROTOTYPE'':sunglasses:')
 # Header 적용
 st.header('Upload your Audio:')
 
-uploaded_file = st.file_uploader("Choose a WAV file", type=["wav", "mp3", "m4a"])
-#uploaded_file = st.file_uploader("Choose a WAV file")
+#uploaded_file = st.file_uploader("Choose a WAV file", type=["wav", "mp3", "m4a"])
+uploaded_file = st.file_uploader("Choose a WAV file")
 
-#if uploaded_file.type != "wav", "mp3", "m4a"]:
-#    st.error("Please upload file that is wav, mp3, m4a format.")
+if (uploaded_file.type != "audio/x-m4a") and (uploaded_file.type != "audio/x-m4a") and (uploaded_file.type != "audio/mpeg"):
+    st.error("Please upload file that is wav, mp3, m4a format.")
 if uploaded_file is not None:
-#    if uploaded_file.type == ["wav", "mp3", "m4a"] :
+
     # Read the uploaded file
     st.success(uploaded_file.type)
+    if uploaded_file.type == "audio/x-m4a":
+        st.error("WOW YOU ARE TROLLING")
     audio_origin, sr = lr.load(uploaded_file, sr=None)
     audio_mono = lr.to_mono(audio_origin)
     audio_length = lr.get_duration(y = audio_mono, sr=sr)
