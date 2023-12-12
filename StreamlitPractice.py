@@ -3,6 +3,9 @@ import librosa as lr
 import numpy as np
 import soundfile as sf
 import matplotlib.pyplot as plt
+import IPython.display as ipd
+import io
+
 # Copied from tutorial
 # 타이틀 적용 예시
 st.title(':sunglasses:''MBTI AUDIO EFFECTOR PROTOTYPE'':sunglasses:')
@@ -20,6 +23,7 @@ if uploaded_file is not None:
     st.write("Audio duration:", lr.get_duration(audio_data), "seconds")
 
 
+
 # Subheader 적용
 st.subheader('이것은 subheader 입니다')
 
@@ -33,6 +37,8 @@ def function():
 '''
 st.code(sample_code, language="python")
 
+
+"""
 # 일반 텍스트
 st.text('일반적인 텍스트를 입력해 보았습니다.')
 
@@ -44,3 +50,4 @@ st.markdown(":green[$\sqrt{x^2+y^2}=1$] 와 같이 latex 문법의 수식 표현
 
 # LaTex 수식 지원
 st.latex(r'\sqrt{x^2+y^2}=1')
+"""
