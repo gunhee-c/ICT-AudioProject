@@ -27,7 +27,7 @@ if uploaded_file is not None:
     audio_length = lr.get_duration(y = audio_mono, sr=sr)
 
     #How long is the audio
-    st.text("Length of Audio (Seconds): ", audio_length)
+    st.write("Length of Audio (Seconds): ", audio_length)
 
     # Plotting the waveform
     S = lr.feature.melspectrogram(y = audio_mono, sr=sr)
