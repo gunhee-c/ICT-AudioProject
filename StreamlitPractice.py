@@ -9,8 +9,22 @@ import io
 # 타이틀 적용 예시
 
 #def
+def play_librosa_audio(y, sr):
+    """
+    """
+    # Convert the NumPy array to an audio buffer
+    audio_buffer = io.BytesIO()
+    sf.write(audio_buffer, y, sr, format='WAV')
+    audio_buffer.seek(0)
 
+    # Use st.audio to display the audio player
+    st.audio(audio_buffer, format='audio/wav')
 #
+
+
+
+###################################
+
 st.title(':sunglasses:''MBTI AUDIO EFFECTOR PROTOTYPE'':sunglasses:')
 
 
@@ -28,7 +42,7 @@ if uploaded_file is not None:
 
     #How long is the audio
     st.write("Length of Audio (Seconds): " + str(round(audio_length) +"seconds." )
-
+    play_librosa_audio(audio_mono, sr):
 """
     # Plotting the waveform
     S = lr.feature.melspectrogram(y = audio_mono, sr=sr)
