@@ -4,10 +4,19 @@ import numpy as np
 import soundfile as sf
 import matplotlib.pyplot as plt
 import io
+import os
 
-
-
+#TODO
+def convert_m4a_to_wav(m4a_path):
+    """
+    Convert an M4A file to WAV format.
+    """
+    wav_path = os.path.splitext(m4a_path)[0] + '.wav'
+    audio = AudioSegment.from_file(m4a_path, format="m4a")
+    audio.export(wav_path, format="wav")
+    return wav_path
 # 
+
 def play_librosa_audio(y, sr):
     # Convert the NumPy array to an audio buffer
     audio_buffer = io.BytesIO()
