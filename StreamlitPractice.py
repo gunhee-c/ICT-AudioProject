@@ -2,7 +2,7 @@ import streamlit as st
 import librosa as lr
 import numpy as np
 import soundfile as sf
-
+import matplotlib.pyplot as plt
 # Copied from tutorial
 # 타이틀 적용 예시
 st.title(':sunglasses:''MBTI AUDIO EFFECTOR PROTOTYPE'':sunglasses:')
