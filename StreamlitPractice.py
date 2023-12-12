@@ -8,10 +8,8 @@ import io
 # Copied from tutorial
 # 타이틀 적용 예시
 
-#def
+# 오디오를 플레이가능하게
 def play_librosa_audio(y, sr):
-    """
-    """
     # Convert the NumPy array to an audio buffer
     audio_buffer = io.BytesIO()
     sf.write(audio_buffer, y, sr, format='WAV')
@@ -20,12 +18,21 @@ def play_librosa_audio(y, sr):
     # Use st.audio to display the audio player
     st.audio(audio_buffer, format='audio/wav')
 #
-
+def show_waveform(y, sr):
+    # Plot waveform
+    plt.figure(figsize=(10, 4))
+    librosa.display.waveshow(y, sr=sr)
+    plt.title('Waveform')
+    plt.xlabel('Time')
+    plt.ylabel('Amplitude')
+    plt.tight_layout()
+    # Show plot in Streamlit
+    st.pyplot(plt)
 
 
 ###################################
 
-st.title(':sunglasses:''MBTI AUDIO EFFECTOR PROTOTYPE'':sunglasses:')
+st.title('MBTI AUDIO EFFECTOR PROTOTYPE'':sunglasses:')
 
 
 # Header 적용
@@ -43,7 +50,7 @@ if uploaded_file is not None:
     #How long is the audio
     st.write("Length of the original audio (Seconds): " + str(round(audio_length)) )
     play_librosa_audio(audio_mono, sr)
-
+    show_waveform(audio_mono, sr)
     start_sample = st.number_input('From which second do you want to sample?')
     end_sample = st.number_input('To which second do you want to sample?')
 """
