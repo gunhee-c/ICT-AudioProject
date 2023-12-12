@@ -27,7 +27,7 @@ if uploaded_file is not None:
 
     # Plotting the waveform
     plt.figure(figsize=(10, 4))
-    librosa.display.waveshow(audio_origin, sr=sr)
+    lr.display.waveshow(audio_origin, sr=sr)
     plt.title('Waveform')
     plt.xlabel('Time (s)')
     plt.ylabel('Amplitude')
