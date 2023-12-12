@@ -18,7 +18,6 @@ def play_librosa_audio(y, sr):
     
 #
 def show_waveform(audio, sr):
-
     fig, ax = plt.subplots()
     time = lr.samples_to_time(range(len(audio)), sr=sr)
     ax.plot(time, audio)
@@ -63,10 +62,12 @@ st.title('MBTI AUDIO EFFECTOR PROTOTYPE'':sunglasses:')
 # Header 적용
 st.header('Upload your Audio:')
 
-uploaded_file = st.file_uploader("Choose a WAV file", type=["wav", "mp3", "m4a"])
+#uploaded_file = st.file_uploader("Choose a WAV file", type=["wav", "mp3", "m4a"])
+uploaded_file = st.file_uploader("Choose a WAV file")
 
-
-if uploaded_file is not None:
+if uploaded_file.type != ["wav", "mp3", "m4a"]:
+    st.error("Please upload file that is wav, mp3, m4a format.
+if uploaded_file is not None and uploaded_file.type == ["wav", "mp3", "m4a"] :
     # Read the uploaded file
     audio_origin, sr = lr.load(uploaded_file, sr=None)
     audio_mono = lr.to_mono(audio_origin)
