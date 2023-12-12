@@ -23,16 +23,24 @@ uploaded_file = st.file_uploader("Choose a WAV file", type=["wav", "mp3", "m4a"]
 if uploaded_file is not None:
     # Read the uploaded file
     audio_origin, sr = lr.load(uploaded_file, sr=None)
+    audio_mono = lr.to_mono(audio_data)
+    audio_length = lr.get_duration(y = audio_mono, sr=sr)
 
+    #How long is the audio
+    st.text("Length of Audio (Seconds): ", audio_length)
 
     # Plotting the waveform
+    S = lr.feature.melspectrogram(y = audio_mono, sr=sr)
+    
+    # Convert to log scale (dB)
+    D = lr.power_to_db(S, ref=np.max)
+    
+    # Display the spectrogram
     plt.figure(figsize=(10, 4))
-    lr.display.waveshow(audio_origin, sr=sr)
-    plt.title('Waveform')
-    plt.xlabel('Time (s)')
-    plt.ylabel('Amplitude')
+    lr.display.specshow(D, sr=sr, x_axis='time', y_axis='mel')
+    plt.colorbar(format='%+2.0f dB')
+    plt.title('Mel-scaled spectrogram')
     plt.tight_layout()
-
     st.pyplot(plt)
 
 # Subheader 적용
