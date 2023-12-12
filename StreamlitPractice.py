@@ -39,19 +39,19 @@ def cut_audio(audio, sr, start_sec, end_sec):
 #
 def validate_start_end(full, start, end):
     if start < 0:
-        st.Error('Start time must be greater than 0')
+        st.error('Start time must be greater than 0')
         return False
     if end >= (full - 1):
-        st.Error('End time must be less than the duration of the audio file')
+        st.error('End time must be less than the duration of the audio file')
         return False
     if end - start > 30:
-        st.Error('Segment length must be less than or equal to 30 seconds')
+        st.error('Segment length must be less than or equal to 30 seconds')
         return False
     if end - start < 3:
-        st.Error('Segment length is to short: make it longer than 3 seconds')
+        st.error('Segment length is to short: make it longer than 3 seconds')
         return False
     if start >= end:
-        st.Error('End time must be greater than start time')
+        st.error('End time must be greater than start time')
         return False
     return True
 
