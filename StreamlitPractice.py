@@ -42,7 +42,7 @@ if uploaded_file is not None:
 
     #How long is the audio
     st.write("Length of Audio (Seconds): " + str(round(audio_length) +"seconds." ))
-    play_librosa_audio(audio_mono, sr):
+    play_librosa_audio(audio_mono, sr)
 """
     # Plotting the waveform
     S = lr.feature.melspectrogram(y = audio_mono, sr=sr)
