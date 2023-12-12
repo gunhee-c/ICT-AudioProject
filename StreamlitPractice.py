@@ -2,7 +2,7 @@ import streamlit as st
 
 # Copied from tutorial
 # 타이틀 적용 예시
-st.title('이것은 타이틀 입니다')
+st.title('MBTI AUDIO EFFECTOR')
 
 # 특수 이모티콘 삽입 예시
 # emoji: https://streamlit-emoji-shortcodes-streamlit-app-gwckff.streamlit.app/
