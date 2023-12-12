@@ -5,18 +5,17 @@ import soundfile as sf
 import matplotlib.pyplot as plt
 import io
 
-# Copied from tutorial
-# 타이틀 적용 예시
 
-# 오디오를 플레이가능하게
+
+# 
 def play_librosa_audio(y, sr):
     # Convert the NumPy array to an audio buffer
     audio_buffer = io.BytesIO()
     sf.write(audio_buffer, y, sr, format='WAV')
     audio_buffer.seek(0)
-    st.write("ARE WE HERE" )
     # Use st.audio to display the audio player
     st.audio(audio_buffer, format='audio/wav')
+    
 #
 def show_waveform(audio, sr):
 
@@ -28,6 +27,33 @@ def show_waveform(audio, sr):
     # Show plot in Streamlit
     st.pyplot(fig)
 
+#c
+def cut_audio(audio, sr, start_sec, end_sec):
+    start_sample = int(start_sec * sr)
+    end_sample = int(end_sec * sr)
+    # Extract the desired segment
+    segment = audio[start_sample:end_sample]
+    return segment
+
+
+#
+def validate_start_end(full, start, end):
+    if start < 0:
+        st.Error('Start time must be greater than 0')
+        return False
+    if end >= (full - 1):
+        st.Error('End time must be less than the duration of the audio file')
+        return False
+    if end - start > 30:
+        st.Error('Segment length must be less than or equal to 30 seconds')
+        return False
+    if end - start < 3:
+        st.Error('Segment length is to short: make it longer than 3 seconds')
+        return False
+    if start >= end:
+        st.Error('End time must be greater than start time')
+        return False
+    return True
 
 ###################################
 
@@ -50,8 +76,19 @@ if uploaded_file is not None:
     st.write("Length of the original audio (Seconds): " + str(round(audio_length)) )
     play_librosa_audio(audio_mono, sr)
     show_waveform(audio_mono, sr)
+    st.write('Get your sample audio segment - under 30 seconds length')
     start_sample = st.number_input('From which second do you want to sample?')
     end_sample = st.number_input('To which second do you want to sample?')
+
+    activate_sampler = False
+    if st.button('Get your Sample!'):
+        activate_sampler = validate_start_end(full, start, end)
+    
+    if activate_sampler == True:
+        st.success('Your sample length is legitimate.')
+        audio_sample = cut_audio(audio_mono, sr, start_sample, end_sample)
+        play_librosa_audio(audio_sample, sr)
+        show_waveform(audio_sample, sr)  
 """
     # Plotting the waveform
     S = lr.feature.melspectrogram(y = audio_mono, sr=sr)
