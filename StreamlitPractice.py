@@ -67,7 +67,7 @@ uploaded_file = st.file_uploader("Choose a WAV file")
 
 
 if uploaded_file is not None:
-    if (uploaded_file.type != "audio/wav"): and (uploaded_file.type != "audio/x-m4a") and (uploaded_file.type != "audio/mpeg"):
+    if (uploaded_file.type != "audio/wav") and (uploaded_file.type != "audio/x-m4a") and (uploaded_file.type != "audio/mpeg"):
         st.error("Please upload file that is wav, mp3, m4a format.")
     # Read the uploaded file
     st.success(uploaded_file.type)
