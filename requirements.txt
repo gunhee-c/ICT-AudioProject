@@ -3,4 +3,4 @@ numpy
 soundfile
 matplotlib
 pydub
-io
+ipython
