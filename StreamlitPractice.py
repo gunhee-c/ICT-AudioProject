@@ -96,4 +96,3 @@ if uploaded_file is not None:
         audio_sample = cut_audio(audio_mono, sr, start_sample, end_sample)
         play_librosa_audio(audio_sample, sr)
         show_waveform(audio_sample, sr)  
-else:
