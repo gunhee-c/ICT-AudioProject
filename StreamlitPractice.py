@@ -8,6 +8,10 @@ import io
 
 # Copied from tutorial
 # 타이틀 적용 예시
+
+#def
+
+#
 st.title(':sunglasses:''MBTI AUDIO EFFECTOR PROTOTYPE'':sunglasses:')
 
 
@@ -16,13 +20,29 @@ st.header('Upload your Audio:')
 
 uploaded_file = st.file_uploader("Choose a WAV file", type=["wav", "mp3", "m4a"])
 
+
 if uploaded_file is not None:
-    audio_data, sr = lr.load(uploaded_file)
-    st.write("Audio file uploaded successfully!")
-    st.write("Sample rate:", sr)
-    st.write("Audio duration:", lr.get_duration(audio_data), "seconds")
+    # Read the uploaded file
+    file_buffer = io.BytesIO(uploaded_file.read())
 
+    # Convert audio to WAV format in memory
+    audio = AudioSegment.from_file(file_buffer)
+    wav_io = io.BytesIO()
+    audio.export(wav_io, format="wav")
+    wav_io.seek(0)
 
+    # Load the audio using librosa
+    y, sr = librosa.load(wav_io, sr=None)  # sr=None to use the original sampling rate
+
+    # Plotting the waveform
+    plt.figure(figsize=(10, 4))
+    librosa.display.waveshow(y, sr=sr)
+    plt.title('Waveform')
+    plt.xlabel('Time (s)')
+    plt.ylabel('Amplitude')
+    plt.tight_layout()
+
+    st.pyplot(plt)
 
 # Subheader 적용
 st.subheader('이것은 subheader 입니다')
