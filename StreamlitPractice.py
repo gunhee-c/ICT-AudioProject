@@ -1,4 +1,5 @@
 import streamlit as st
+import librosa as lr 
 
 # Copied from tutorial
 # 타이틀 적용 예시
