@@ -1,5 +1,4 @@
 librosa
 numpy
-scipy.signal
 soundfile
-pyplot
+matplotlib
