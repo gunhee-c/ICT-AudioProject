@@ -77,9 +77,11 @@ if uploaded_file is not None:
     play_librosa_audio(audio_mono, sr)
     show_waveform(audio_mono, sr)
     st.write('Get your sample audio segment - under 30 seconds length')
+    st.header('Now cut your sample ( 3 < sec < 30 ):')
+
     start_sample = st.number_input('From which second do you want to sample?')
     end_sample = st.number_input('To which second do you want to sample?')
-    st.header('Now cut your sample ( 3 < sec < 30 ):')
+
     activate_sampler = False
     if st.button('Get your Sample!'):
         activate_sampler = validate_start_end(audio_length, start_sample, end_sample)
