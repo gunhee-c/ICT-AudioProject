@@ -1,7 +1,6 @@
 import streamlit as st
 import librosa as lr
 import numpy as np
-import scipy.signal as signal
 import soundfile as sf
 
 # Copied from tutorial
