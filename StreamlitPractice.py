@@ -66,7 +66,7 @@ st.header('Upload your Audio:')
 uploaded_file = st.file_uploader("Choose a WAV file")
 
 if uploaded_file.type != ["wav", "mp3", "m4a"]:
-    st.error("Please upload file that is wav, mp3, m4a format.
+    st.error("Please upload file that is wav, mp3, m4a format.)
 if uploaded_file is not None and uploaded_file.type == ["wav", "mp3", "m4a"] :
     # Read the uploaded file
     audio_origin, sr = lr.load(uploaded_file, sr=None)
