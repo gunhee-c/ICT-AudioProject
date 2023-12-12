@@ -23,7 +23,7 @@ uploaded_file = st.file_uploader("Choose a WAV file", type=["wav", "mp3", "m4a"]
 if uploaded_file is not None:
     # Read the uploaded file
     audio_origin, sr = lr.load(uploaded_file, sr=None)
-    audio_mono = lr.to_mono(audio_data)
+    audio_mono = lr.to_mono(audio_origin)
     audio_length = lr.get_duration(y = audio_mono, sr=sr)
 
     #How long is the audio
