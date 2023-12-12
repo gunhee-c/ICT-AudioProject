@@ -26,7 +26,7 @@ def show_waveform(audio, sr):
     ax.set(xlabel = 'Time (s)', ylabel = 'Sound Amplitude')
     plt.tight_layout()
     # Show plot in Streamlit
-    st.pyplot(plt)
+    st.pyplot(fig)
 
 
 ###################################
