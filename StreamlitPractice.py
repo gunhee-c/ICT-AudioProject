@@ -65,10 +65,10 @@ st.header('Upload your Audio:')
 #uploaded_file = st.file_uploader("Choose a WAV file", type=["wav", "mp3", "m4a"])
 uploaded_file = st.file_uploader("Choose a WAV file")
 
-if (uploaded_file.type != "audio/x-m4a") and (uploaded_file.type != "audio/x-m4a") and (uploaded_file.type != "audio/mpeg"):
-    st.error("Please upload file that is wav, mp3, m4a format.")
-if uploaded_file is not None:
 
+if uploaded_file is not None:
+    if (uploaded_file.type != "audio/wav"): and (uploaded_file.type != "audio/x-m4a") and (uploaded_file.type != "audio/mpeg"):
+        st.error("Please upload file that is wav, mp3, m4a format.")
     # Read the uploaded file
     st.success(uploaded_file.type)
     if uploaded_file.type == "audio/x-m4a":
@@ -96,4 +96,4 @@ if uploaded_file is not None:
         audio_sample = cut_audio(audio_mono, sr, start_sample, end_sample)
         play_librosa_audio(audio_sample, sr)
         show_waveform(audio_sample, sr)  
-
+else:
