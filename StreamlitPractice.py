@@ -3,7 +3,6 @@ import librosa as lr
 import numpy as np
 import soundfile as sf
 import matplotlib.pyplot as plt
-import IPython.display as ipd
 import io
 
 # Copied from tutorial
