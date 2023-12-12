@@ -2,14 +2,20 @@ import streamlit as st
 
 # Copied from tutorial
 # 타이틀 적용 예시
-st.title('MBTI AUDIO EFFECTOR')
+st.title(':sunglasses:''MBTI AUDIO EFFECTOR PROTOTYPE'':sunglasses:')
 
-# 특수 이모티콘 삽입 예시
-# emoji: https://streamlit-emoji-shortcodes-streamlit-app-gwckff.streamlit.app/
-st.title('스마일 :sunglasses:')
 
 # Header 적용
-st.header('헤더를 입력할 수 있어요! :sparkles:')
+st.header('Upload your Audio:')
+
+uploaded_file = st.file_uploader("Choose a WAV file", type=["wav", "mp3", "m4a"])
+
+if uploaded_file is not None:
+    audio_data, sr = lr.load(uploaded_file)
+    st.write("Audio file uploaded successfully!")
+    st.write("Sample rate:", sr)
+    st.write("Audio duration:", lr.get_duration(audio_data), "seconds")
+
 
 # Subheader 적용
 st.subheader('이것은 subheader 입니다')
