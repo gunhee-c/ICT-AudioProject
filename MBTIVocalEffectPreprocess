@@ -65,7 +65,7 @@ def validate_start_end(full, start, end):
     return True
 
 ###################################
-def main_Preprocess():
+def main_preprocess():
     st.title('MBTI AUDIO EFFECTOR PROTOTYPE'':sunglasses:')
 
 
