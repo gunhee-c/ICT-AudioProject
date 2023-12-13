@@ -2,7 +2,7 @@ import streamlit as st
 import librosa as lr
 import numpy as np
 
-from MBTIVocalEffectPreprocess import *
+from Preprocess import *
 from TryMath import st_injection
 
 
