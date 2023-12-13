@@ -2,13 +2,13 @@ import streamlit as st
 import librosa as lr
 import numpy as np
 
-#from MBTIVocalEffectPreprocess import main_preprocess
+from MBTIVocalEffectPreprocess import *
 from TryMath import st_injection
 
 
 st.header('TESTING')
 
-#main_preprocess()
+main_preprocess()
 
 tab1, tab2, tab3 = st.tabs(["메인", "Check ProgressSee Details", "MBTI 보컬 이펙터 설명"])
 
