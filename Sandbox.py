@@ -2,7 +2,7 @@ import streamlit as st
 import librosa as lr
 import numpy as np
 
-from MBTIVocalEffectProcess import main
+from MBTIVocalEffectProcess import main_preprocess
 
 
 
