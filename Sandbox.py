@@ -2,6 +2,8 @@ import streamlit as st
 import librosa as lr
 import numpy as np
 
+from TryMath import st_injection
+
 st.header('TESTING')
 
 # Topbar categories
@@ -9,8 +11,7 @@ categories = ['Math', 'Audio', 'Information']
 selected_category = st.sidebar.selectbox('Select a category', categories)
 
 if selected_category == 'Math':
-    # Add math-related code here
-    st.write('Math category selected')
+    st_injection()
 elif selected_category == 'Audio':
     # Add audio-related code here
     st.write('Audio category selected')
