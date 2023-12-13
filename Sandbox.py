@@ -4,4 +4,19 @@ import numpy as np
 
 st.header('TESTING')
 
-st.write('This is a sandbox of the Streamlit app.')
+# Topbar categories
+categories = ['Math', 'Audio', 'Information']
+selected_category = st.sidebar.selectbox('Select a category', categories)
+
+if selected_category == 'Math':
+    # Add math-related code here
+    st.write('Math category selected')
+elif selected_category == 'Audio':
+    # Add audio-related code here
+    st.write('Audio category selected')
+elif selected_category == 'Information':
+    # Add information-related code here
+    st.write('Information category selected')
+
+
+
