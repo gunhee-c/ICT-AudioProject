@@ -5,7 +5,7 @@ import numpy as np
 from Preprocess import *
 from TryMath import st_injection
 
-tabFirst , tabSecond = st,tabs(["MBTI 보컬 이펙터 설명", "Upload your Audio"])
+tabFirst , tabSecond = st.tabs(["MBTI 보컬 이펙터 설명", "Upload your Audio"])
 
 with tabFirst:
     st.title('MBTI AUDIO EFFECTOR PROTOTYPE'':sunglasses:')
