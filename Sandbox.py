@@ -2,22 +2,27 @@ import streamlit as st
 import librosa as lr
 import numpy as np
 
-from TryMath import st_injection
+from MBTIVocalEffectProcess import main
+
+
 
 st.header('TESTING')
 
-# Topbar categories
-categories = ['Math', 'Audio', 'Information']
-selected_category = st.sidebar.selectbox('Select a category', categories)
+main_preprocess()
 
-if selected_category == 'Math':
-    st_injection()
-elif selected_category == 'Audio':
-    # Add audio-related code here
-    st.write('Audio category selected')
-elif selected_category == 'Information':
-    # Add information-related code here
-    st.write('Information category selected')
+tab1, tab2, tab3 = st.tabs(["메인", "Check ProgressSee Details", "MBTI 보컬 이펙터 설명"])
+
+with tab1:
+   st.header("A cat")
+   st.image("https://static.streamlit.io/examples/cat.jpg", width=200)
+
+with tab2:
+   st.header("A dog")
+   st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
+
+with tab3:
+   st.header("An owl")
+   st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
 
 
 
