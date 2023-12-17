@@ -13,7 +13,7 @@ def tabFirst_message():
 
     if button("자세히 알아보기!", key="button1"):
         tabFirst_detail()
-        if button("MBTI별 이펙트를 알아보세요"):
+        if button("MBTI별 이펙트를 알아보세요", key="button2"):
             genre = st.radio(
                             "MBTI별 이펙트를 알아보세요",
                             ["I & E", "S & N", "F & T", "P & J"],
