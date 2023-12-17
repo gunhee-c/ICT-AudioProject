@@ -21,11 +21,11 @@ def tabFirst_message():
 
         if st.button('어떻게?'):
 
-
+            tabFirst_detail2()
 
             st.session_state['button'] = False
             
-            tabFirst_detail2()
+
 
             st.checkbox('이해했어요!')
 
@@ -59,7 +59,7 @@ def tabFirst_detail2():
         st.write("J는 계획적 성격을 의미합니다")
     else:
         st.write("P는 즉흥적 성격을 의미합니다")
-
+    st.session_state['button'] = False
 
 
 def tab1_message():
