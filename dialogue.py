@@ -1,5 +1,5 @@
 import streamlit as st
-
+from streamlit import option_menu
 
 def tabFirst_message():
     st.header('MBTI 보컬 이펙터 설명')
@@ -23,11 +23,10 @@ def tabFirst_detail():
         tabFirst_detail2()
 
 def tabFirst_detail2():
-
     with st.sidebar:
-        choice = ["I & E", "S & N", "F & T", "J & P"]
+        choice = option_menu(None, ["I & E", "S & N", "F & T", "J & P"])
         if choice == "I & E":
-            genre = st.radio(["I", "E"],
+            genre = st.radio(None, ["I", "E"],
             index= "I")
             if genre == "I":
                     st.write("I는 내성적 성격을 의미합니다")
