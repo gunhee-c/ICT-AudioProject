@@ -4,7 +4,7 @@ import numpy as np
 
 from Preprocess import *
 from TryMath import st_injection
-
+from dialogue import *
 st.title('MBTI AUDIO EFFECTOR PROTOTYPE'':sunglasses:')
 # URL of the raw audio file on GitHub
 audio_file_url = 'https://github.com/gunhee-c/ICT-AudioProject/blob/main/Sample_IR2.wav?raw=true'
@@ -20,10 +20,8 @@ activate_sampler = False
 tabFirst , tabSecond = st.tabs(["MBTI 보컬 이펙터 설명", "Upload your Audio"])
 
 with tabFirst:
+    tabFirst_message()
 
-    st.header('MBTI 보컬 이펙터 설명')
-    st.write('MBTI 컨셉을 이용해 당신의 보컬 소리에 이펙트를 넣어보세요')
-    st.write('당신의 보컬을 더욱 더 멋지게 만들어줄 것입니다')
 with tabSecond:
 
     st.header('Upload your Audio:')
@@ -64,10 +62,10 @@ with tabSecond:
             main_data = [audio_mono, audio_sample, sr, audio_length, activate_sampler]  
 
 if activate_sampler == True:
-    tab1, tab2, tab3 = st.tabs(["메인", "Check ProgressSee Details", "MBTI 보컬 이펙터 설명"])
+    tab1, tab2, tab3 = st.tabs(["How to use", "Main", "Export"])
 
     with tab1:
-        st_injection()
+        
 
         st.header("A cat")
         st.image("https://static.streamlit.io/examples/cat.jpg", width=200)
