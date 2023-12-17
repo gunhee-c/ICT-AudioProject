@@ -28,7 +28,43 @@ with tabFirst:
     st.write('MBTI 컨셉을 이용해 당신의 보컬 소리에 이펙트를 넣어보세요')
     st.write('당신의 보컬을 더욱 더 멋지게 만들어줄 것입니다')
 with tabSecond:
-    [audio_mono, audio_sample, sr, audio_length, activate_sampler]=main_preprocess()   
+
+    st.header('Upload your Audio:')
+
+    #uploaded_file = st.file_uploader("Choose a WAV file", type=["wav", "mp3", "m4a"])
+    uploaded_file = st.file_uploader("Choose a WAV or MP3 file")
+
+    if uploaded_file is not None:
+        if (uploaded_file.type != "audio/wav") and (uploaded_file.type != "audio/x-m4a") and (uploaded_file.type != "audio/mpeg"):
+            st.error("Please upload file that is wav, mp3, m4a format.")
+        # Read the uploaded file
+        st.success(uploaded_file.type)
+        if uploaded_file.type == "audio/x-m4a":
+            st.error("WOW YOU ARE TROLLING")
+        audio_origin, sr = lr.load(uploaded_file, sr=None)
+        audio_mono = lr.to_mono(audio_origin)
+        audio_length = lr.get_duration(y = audio_mono, sr=sr)
+
+        #How long is the audio
+        st.write("Length of the original audio (Seconds): " + str(round(audio_length)) )
+        play_librosa_audio(audio_mono, sr)
+        show_waveform(audio_mono, sr)
+        st.write('Get your sample audio segment - under 30 seconds length')
+        st.header('Now cut your sample ( 3 < sec < 30 ):')
+
+        start_sample = st.number_input('From which second do you want to sample?')
+        end_sample = st.number_input('To which second do you want to sample?')
+
+        activate_sampler = False
+        if st.button('Get your Sample!'):
+            activate_sampler = validate_start_end(audio_length, start_sample, end_sample)
+        
+        if activate_sampler == True:
+            st.success('Your sample length is legitimate.')
+            audio_sample = cut_audio(audio_mono, sr, start_sample, end_sample)
+            play_librosa_audio(audio_sample, sr)
+            show_waveform(audio_sample, sr)  
+            main_data = [audio_mono, audio_sample, sr, audio_length, activate_sampler]  
 
 if activate_sampler == True:
     tab1, tab2, tab3 = st.tabs(["메인", "Check ProgressSee Details", "MBTI 보컬 이펙터 설명"])
