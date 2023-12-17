@@ -27,7 +27,7 @@ def tabFirst_detail():
         tabFirst_detail2()
 
 def tabFirst_detail2():
-    
+    pass
 
 
 
