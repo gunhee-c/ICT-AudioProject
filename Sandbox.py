@@ -5,10 +5,11 @@ import numpy as np
 from Preprocess import *
 from TryMath import st_injection
 
+st.title('MBTI AUDIO EFFECTOR PROTOTYPE'':sunglasses:')
 tabFirst , tabSecond = st.tabs(["MBTI 보컬 이펙터 설명", "Upload your Audio"])
 
 with tabFirst:
-    st.title('MBTI AUDIO EFFECTOR PROTOTYPE'':sunglasses:')
+
     st.header('MBTI 보컬 이펙터 설명')
     st.write('MBTI 컨셉을 이용해 당신의 보컬 소리에 이펙트를 넣어보세요')
     st.write('당신의 보컬을 더욱 더 멋지게 만들어줄 것입니다')

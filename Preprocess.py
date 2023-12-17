@@ -18,6 +18,7 @@ def convert_m4a_to_wav(m4a_path):
     return wav_path
 # 
 """
+
 def play_librosa_audio(y, sr):
     # Convert the NumPy array to an audio buffer
     audio_buffer = io.BytesIO()
@@ -104,5 +105,5 @@ def main_preprocess():
             audio_sample = cut_audio(audio_mono, sr, start_sample, end_sample)
             play_librosa_audio(audio_sample, sr)
             show_waveform(audio_sample, sr)  
-
+    #[Audio_Original, Audio_Segment, sr, Audio_Length, Audio_Start, Audio_End, Boolean]
     return "엄준식"
