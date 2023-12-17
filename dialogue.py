@@ -31,8 +31,7 @@ def tabFirst_message():
             #    st.write("All 3 buttons are pressed")
             #if button("Button 2", key="button2"):
             if st.button("다 봤습니다"):
-                button1 = False
-
+                button1 = True
 
 def tabFirst_detail():
     st.write("... 거짓말이었습니다")
