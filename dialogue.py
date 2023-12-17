@@ -9,7 +9,7 @@ def tabFirst_message():
     st.write('당신의 보컬을 알아보는 것도 좋지 않을까요?')
 
 
-    button1 = st.button('Check 1')
+    button1 = st.button('자세히 알아보기!')
 
     if st.session_state.get('button') != True:
 
@@ -17,15 +17,16 @@ def tabFirst_message():
 
     if st.session_state['button'] == True:
 
-        st.write("button1 is True")
+        tabFirst_detail()
 
-        if st.button('Check 2'):
+        if st.button('어떻게?'):
 
             st.write("Hello, it's working")
 
             st.session_state['button'] = False
 
-            st.checkbox('Reload')
+            st.checkbox('접기')
+
     if (st.button('자세히 알아보기!')):
         tabFirst_detail()
 
@@ -35,12 +36,23 @@ def tabFirst_detail():
     st.write("사실 보컬의 MBTI가 아닌 보컬 이펙팅을 같이 알아보고자 합니다")
     st.write("프로들이 사용하는 보컬 이펙팅을 경험해보세요")
     st.write("어떻게 그들은 목소리를 더욱 더 멋지게 했을까요?")
-    if (st.button('어떻게?')):
-        st.write("... 거짓말이었습니다")
+
 
 def tabFirst_detail2():
-    st.write("... 거짓말이었습니다")
+    mbti_show = st.radio(
+    "MBTI별 보컬 이펙팅을 알아보세요",
+    ["I & E", "S & N", "F & T", "J & P"],
+    captions = ["EQ와 필터", "리버브, 컴프레션", "옥타브 더블링", "오토튠, 노이즈 캔슬"])
 
+    if mbti_show == "I & E":
+        st.write("I는 내성적 성격을 의미합니다")
+        st.write("저는 내성적인 I를 phone 필터로 표현했습니다")
+        st.write("저음역대와 고음역대를 날려 조금은 답답한 느낌이 들게 했습니다")
+        st.write("E는 외향적 성격을 의미합니다")
+        st.write("저는 외향적인 E를 air 필터로 표현했습니다")
+        st.write("고음역대를 강조해 밝고 시원한 느낌이 들게 했습니다")
+    else:
+        st.write("You didn\'t select comedy.")
 
 
 
