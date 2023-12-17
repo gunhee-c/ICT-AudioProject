@@ -37,6 +37,19 @@ def show_waveform(audio, sr):
     # Show plot in Streamlit
     st.pyplot(fig)
 
+def show_spectrogram(audio, sr):
+    fig, ax = plt.sublots()
+    S = lr.feature.melspectrogram(y=audio, sr=sr)
+    D = lr.power_to_db(S, ref=np.max)
+    plt.figure(figsize=(10, 4))
+    lr.display.specshow(D, sr=sr, y_axis='log', x_axis='time')
+    plt.colorbar(format='%+2.0f dB')
+    plt.title('Mel-scaled spectrogram')
+    plt.ylim(20, None)  # Set the y-axis range to be greater than 20
+    plt.tight_layout()
+    st.pyplot(fig)
+    plt.show()
+
 #c
 def cut_audio(audio, sr, start_sec, end_sec):
     start_sample = int(start_sec * sr)
@@ -67,7 +80,6 @@ def validate_start_end(full, start, end):
 
 ###################################
 def main_preprocess():
-    st.title('MBTI AUDIO EFFECTOR PROTOTYPE'':sunglasses:')
 
     # Header 적용
     st.header('Upload your Audio:')

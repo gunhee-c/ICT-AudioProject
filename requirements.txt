@@ -3,3 +3,5 @@ numpy
 soundfile
 matplotlib
 pydub
+noisereduce
+torch

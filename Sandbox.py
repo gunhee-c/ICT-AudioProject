@@ -6,6 +6,7 @@ from Preprocess import *
 from TryMath import st_injection
 
 st.title('MBTI AUDIO EFFECTOR PROTOTYPE'':sunglasses:')
+
 tabFirst , tabSecond = st.tabs(["MBTI 보컬 이펙터 설명", "Upload your Audio"])
 
 with tabFirst:
