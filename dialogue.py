@@ -18,7 +18,7 @@ def tabFirst_detail():
     st.write("프로들이 사용하는 보컬 이펙팅을 경험해보세요")
     st.write("어떻게 그들은 목소리를 더욱 더 멋지게 했을까요?")
     if (st.button('어떻게?')):
-        tabFirst_detail2()
+        st.write("... 거짓말이었습니다")
 
 def tabFirst_detail2():
     st.write("... 거짓말이었습니다")
