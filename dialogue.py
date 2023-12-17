@@ -10,41 +10,27 @@ def tabFirst_message():
     st.write('당신의 보컬을 알아보는 것도 좋지 않을까요?')
 
 
-    button1 = st.button('자세히 알아보기!')
-    if button("Button 1", key="button1"):
-        if button("Button 2", key="button2"):
-            if button("Button 3", key="button3"):
-                st.write("All 3 buttons are pressed")
-    if st.session_state.get('button') != True:
 
-        st.session_state['button'] = button1
-
-    if st.session_state['button'] == True:
-
+    if button("자세히 알아보기!", key="button1"):
         tabFirst_detail()
-        genre = st.radio(
-    "MBTI별 이펙트를 알아보세요",
-    ["I & E", "S & N", "F & T", "P & J"],
-    captions = ["EQ & Filter.", "Reverb & Compression", "Octave High & Low", "Noise Reduction & Autotune"])
-        st.session_state['button'] = False
-        st.checkbox('이해했어요!')
-        if genre == "I & E":
-            tabFirst_detail2()
-            st.session_state['button'] = False
-            st.checkbox('이해했어요!')
+        if button("MBTI별 이펙트를 알아보세요"):
+            genre = st.radio(
+                            "MBTI별 이펙트를 알아보세요",
+                            ["I & E", "S & N", "F & T", "P & J"],
+                            captions = ["EQ & Filter.", "Reverb & Compression", "Octave High & Low", "Noise Reduction & Autotune"])
 
-        elif genre == "S & N":
-            tabFirst_detail2()
-            st.session_state['button'] = False
-            st.checkbox('이해했어요!')
-        elif genre == "F & T":
-            tabFirst_detail2()
-            st.session_state['button'] = False
-            st.checkbox('이해했어요!')
-        elif genre == "P & J":
-            tabFirst_detail2()
-            st.session_state['button'] = False
-            st.checkbox('이해했어요!')
+            if genre == "I & E":
+                tabFirst_detail2()
+            elif genre == "S & N":
+                tabFirst_detail2()
+            elif genre == "F & T":
+                tabFirst_detail2()
+            else:
+                tabFirst_detail2()
+            #if button("Button 3", key="button3"):
+            #    st.write("All 3 buttons are pressed")
+            #if button("Button 2", key="button2"):
+        
 
 
 def tabFirst_detail():
