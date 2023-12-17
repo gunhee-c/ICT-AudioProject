@@ -7,7 +7,7 @@ from TryMath import st_injection
 from dialogue import *
 
 def create_widget_set(key):
-    opt = st.selectbox("Choose option", ["I: Phone-effect", "E: Add air, S: Reverb, N: Compressor", 
+    opt = st.selectbox(["I: Phone-effect", "E: Add air, S: Reverb, N: Compressor", 
                                    "F: Octave High", "T: Octave Low", "P: Noise Cancelling, J: Autotune, None"], 
                                    key=f'select_{key}')
     rat = st.slider("Select a Value", min_value=0, max_value=100, key=f'slider_{key}')
@@ -80,29 +80,21 @@ if activate_sampler == True:
         MBTIinput = []
         ratioinput = []
 
-        # Create two columns
-        col1, col2 = st.columns(2)
 
-        # Place selectbox in the first column
-        with col1:
-            selected_option = st.selectbox("Choose an Option", ["Option 1", "Option 2", "Option 3"])
+        index = 1
+        for i in range(4):
+            ans = create_widget_set(index)
+            MBTIinput.append(ans[0])
+            ratioinput.append(ans[1])
+            index += 1
 
-        # Place slider in the second column
-        with col2:
-            index = 1
+         # Add widget button
+        if button('Add Widget', key="button4" ):
             for i in range(4):
                 ans = create_widget_set(index)
                 MBTIinput.append(ans[0])
                 ratioinput.append(ans[1])
                 index += 1
-
-            # Add widget button
-            if button('Add Widget', key="button4" ):
-                for i in range(4):
-                    ans = create_widget_set(index)
-                    MBTIinput.append(ans[0])
-                    ratioinput.append(ans[1])
-                    index += 1
             # Remove widget button
 
     with tab3:
