@@ -21,11 +21,11 @@ def tabFirst_message():
 
         if st.button('어떻게?'):
 
-            st.write("Hello, it's working")
+            tabFirst_detail2()
 
             st.session_state['button'] = False
 
-            st.checkbox('접기')
+            st.checkbox('이해했어요!')
 
 
 def tabFirst_detail():
