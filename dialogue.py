@@ -15,7 +15,7 @@ def tabFirst_message():
         tabFirst_detail()
         if button("MBTI별 이펙트를 알아보세요", key="button2"):
             genre = st.radio(
-                            "MBTI별 이펙트를 알아보세요",
+                            None,
                             ["I & E", "S & N", "F & T", "P & J"],
                             captions = ["EQ & Filter.", "Reverb & Compression", "Octave High & Low", "Noise Reduction & Autotune"])
 
@@ -30,7 +30,8 @@ def tabFirst_message():
             #if button("Button 3", key="button3"):
             #    st.write("All 3 buttons are pressed")
             #if button("Button 2", key="button2"):
-        
+            if st.button("다 봤습니다"):
+                button1 = False
 
 
 def tabFirst_detail():
