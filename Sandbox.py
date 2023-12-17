@@ -17,7 +17,7 @@ else:
 #Dummy Data
 activate_sampler = False
 
-tabFirst , tabSecond = st.tabs(["MBTI 보컬 이펙터란", "Upload your Audio"])
+tabFirst , tabSecond = st.tabs(["MBTI 보컬 이펙터?", "Upload your Audio"])
 
 with tabFirst:
     tabFirst_message()
@@ -65,15 +65,24 @@ if activate_sampler == True:
     tab1, tab2, tab3 = st.tabs(["How to use", "Main", "Export"])
 
     with tab1:
-        st.button("text")
-
-        st.header("A cat")
-        st.image("https://static.streamlit.io/examples/cat.jpg", width=200)
+        tab1_message()
 
     with tab2:
-        st.header("A dog")
-        st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
+        st.write("Combined Selectbox and Slider Widget")
 
+        # Create two columns
+        col1, col2 = st.columns(2)
+
+        # Place selectbox in the first column
+        with col1:
+            selected_option = st.selectbox("Choose an Option", ["Option 1", "Option 2", "Option 3"])
+
+        # Place slider in the second column
+        with col2:
+            slider_value = st.slider("Select a Value", min_value=0, max_value=100)
+
+        # Display the selected values
+        st.write(f"You selected {selected_option} and set the slider to {slider_value}.")
     with tab3:
         st.header("An owl")
         st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
