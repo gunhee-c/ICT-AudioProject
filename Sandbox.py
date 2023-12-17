@@ -17,10 +17,10 @@ with tabFirst:
 with tabSecond:
     audio_mono = None
     audio_sample = None
-    sr = 44100
-    audio_length = 0
+    sr = None
+    audio_length = None
     activate_sampler = False
-    [audio_mono, audio_sample, sr, audio_length, activate_sampler] = main_preprocess()   
+    [audio_mono, audio_sample, sr, audio_length, activate_sampler]=main_preprocess()   
 
 if activate_sampler == True:
     tab1, tab2, tab3 = st.tabs(["메인", "Check ProgressSee Details", "MBTI 보컬 이펙터 설명"])
