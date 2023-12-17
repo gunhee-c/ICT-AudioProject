@@ -11,7 +11,9 @@ def tabFirst_message():
         selected = option_menu("Main Menu",  ["I & E", "S & N", "F & T", "J & P"], default_index=1)
         if selected == "I & E":
             st.write("당신의 보컬은 I형일까요? E형일까요?")
-
+        else:
+            st.write("당신의 보컬은 S형일까요? N형일까요?")
+        
     if (st.button('자세히 알아보기!')):
         tabFirst_detail()
 
