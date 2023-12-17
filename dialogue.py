@@ -28,7 +28,8 @@ def tabFirst_message():
             st.checkbox('접기')
 
     if (st.button('자세히 알아보기!')):
-        tabFirst_detail2()
+        pass
+        #tabFirst_detail2()
 
 def tabFirst_detail():
     st.write("... 거짓말이었습니다")
