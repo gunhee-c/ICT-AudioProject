@@ -8,6 +8,24 @@ def tabFirst_message():
     st.write('당신의 성격을 알아보는 것도 좋지만,')
     st.write('당신의 보컬을 알아보는 것도 좋지 않을까요?')
 
+
+    button1 = st.button('Check 1')
+
+    if st.session_state.get('button') != True:
+
+        st.session_state['button'] = button1
+
+    if st.session_state['button'] == True:
+
+        st.write("button1 is True")
+
+        if st.button('Check 2'):
+
+            st.write("Hello, it's working")
+
+            st.session_state['button'] = False
+
+            st.checkbox('Reload')
     if (st.button('자세히 알아보기!')):
         tabFirst_detail()
 
