@@ -18,9 +18,10 @@ def tabFirst_message():
     if st.session_state['button'] == True:
 
         tabFirst_detail()
-
-        if st.button('어떻게?'):
-
+        button2 = st.button('어떻게?')
+        if st.session_state.get('button') != True:
+            st.session_state['button'] = button1
+        if st.session_state['button'] == True:
             tabFirst_detail2()
 
             st.session_state['button'] = False
