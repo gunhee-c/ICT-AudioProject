@@ -1,7 +1,5 @@
 import streamlit as st
 
-def toggle_custom():
-    st.session_state['toggle'] = not st.session_state['toggle']
 
 def tabFirst_message():
     st.header('MBTI 보컬 이펙터 설명')
@@ -10,21 +8,8 @@ def tabFirst_message():
     st.write('당신의 성격을 알아보는 것도 좋지만,')
     st.write('당신의 보컬을 알아보는 것도 좋지 않을까요?')
 
-    #Test
-    if 'toggle' not in st.session_state:
-        st.session_state['toggle'] = False
 
-    # Define a function to toggle the state
 
-    # Button text changes based on the toggle state
-    toggle_button_text = "ON" if st.session_state['toggle'] else "OFF"
-
-    # Create a button and attach the toggle function
-    if st.button(toggle_button_text):
-        toggle_custom()
-
-    # Display the current state of the toggle
-    st.write("Toggle is:", "ON" if st.session_state['toggle'] else "OFF")
     if (st.button('자세히 알아보기!')):
         tabFirst_detail()
 
@@ -38,24 +23,28 @@ def tabFirst_detail():
         tabFirst_detail2()
 
 def tabFirst_detail2():
-    option = st.sidebar.selectbox(
-    'Menu',
-     ('페이지1', '페이지2', '페이지3'))
+
     with st.sidebar:
         choice = ["I & E", "S & N", "F & T", "J & P"]
         if choice == "I & E":
-            st.write("페이지1")
+            genre = st.radio(["I", "E"],
+            index= "I")
+            if genre == "I":
+                    st.write("I는 내성적 성격을 의미합니다")
+                    st.write("저는 내성적인 I를 phone 필터로 표현했습니다")
+                    st.write("저음역대와 고음역대를 날려 조금은 답답한 느낌이 들게 했습니다")
+            else:
+                    st.write("E는 외향적 성격을 의미합니다")
+                    st.write("저는 외향적인 E를 air 필터로 표현했습니다")
+                    st.write("고음역대를 강조해 밝고 시원한 느낌이 들게 했습니다")
         elif choice == "S & N":
             st.write("페이지2")
         elif choice == "F & T":
             st.write("페이지3")
-        elif choice == "J & P":
-            pass
-    st.write("I는 내성적, E는 외향적 성격을 의미합니다")
-    st.write("저는 내성적인 I를 phone 필터로 표현했습니다")
-    st.write("저음역대와 고음역대를 날려 조금은 답답한 느낌이 들게 했습니다")
-    st.write("저는 외향적인 E를 air 필터로 표현했습니다")
-    st.write("고음역대를 강조해 밝고 시원한 느낌이 들게 했습니다")    
+        else:
+            st.write("페이지2")
+
+
 
 
 def tab1_message():
