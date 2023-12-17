@@ -8,21 +8,6 @@ def tabFirst_message():
     st.write('당신의 성격을 알아보는 것도 좋지만,')
     st.write('당신의 보컬을 알아보는 것도 좋지 않을까요?')
 
-
-
-    if (st.button('자세히 알아보기!')):
-        tabFirst_detail()
-
-def tabFirst_detail():
-    st.write("... 거짓말이었습니다")
-    st.write("")
-    st.write("사실 보컬의 MBTI가 아닌 보컬 이펙팅을 같이 알아보고자 합니다")
-    st.write("프로들이 사용하는 보컬 이펙팅을 경험해보세요")
-    st.write("어떻게 그들은 목소리를 더욱 더 멋지게 했을까요?")
-    if (st.button('어떻게?')):
-        tabFirst_detail2()
-
-def tabFirst_detail2():
     with st.sidebar:
         selected = option_menu(None, ["I & E", "S & N", "F & T", "J & P"])
         if selected == "I & E":
@@ -42,6 +27,21 @@ def tabFirst_detail2():
             st.write("페이지3")
         else:
             st.write("페이지2")
+
+    if (st.button('자세히 알아보기!')):
+        tabFirst_detail()
+
+def tabFirst_detail():
+    st.write("... 거짓말이었습니다")
+    st.write("")
+    st.write("사실 보컬의 MBTI가 아닌 보컬 이펙팅을 같이 알아보고자 합니다")
+    st.write("프로들이 사용하는 보컬 이펙팅을 경험해보세요")
+    st.write("어떻게 그들은 목소리를 더욱 더 멋지게 했을까요?")
+    if (st.button('어떻게?')):
+        tabFirst_detail2()
+
+def tabFirst_detail2():
+    
 
 
 
