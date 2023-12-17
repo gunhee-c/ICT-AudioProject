@@ -87,11 +87,12 @@ if activate_sampler == True:
 
         # Place slider in the second column
         with col2:
+            if 'num_widgets' not in st.session_state:
+                st.session_state.num_widgets = 3
             for i in range(st.session_state.num_widgets):
                 create_widget_set(i)
             slider_value = st.slider("Select a Value", min_value=0, max_value=100)
-            if 'num_widgets' not in st.session_state:
-                st.session_state.num_widgets = 3
+
             # Add widget button
             if st.button('Add Widget') and st.session_state.num_widgets < 9:
                 st.session_state.num_widgets += 1
