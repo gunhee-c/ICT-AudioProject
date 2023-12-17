@@ -81,20 +81,9 @@ def validate_start_end(full, start, end):
 
 ###################################
 def main_preprocess():
-
-    
-# URL of the raw audio file on GitHub
-    audio_file_url = 'https://github.com/gunhee-c/ICT-AudioProject/blob/main/Sample_IR2.wav?raw=true'
-    response = requests.get(audio_file_url)
-    if response.status_code == 200:
-        st.audio(response.content, format='audio/wav')
-    else:
-        st.write("Failed to load audio file.")
 # Default Dummy Settings   
-    audio_origin = lr.load(response.content, sr=None)
-    audio_mono = lr.to_mono(audio_origin)
-    audio_length = lr.get_duration(y = audio_mono, sr=sr)
-    activate_sampler = False
+    IR_response = audio_mono
+
 # Send a GET request to the URL
 
     # Header 적용
