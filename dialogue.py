@@ -22,7 +22,8 @@ def tabFirst_message():
     "MBTI별 이펙트를 알아보세요",
     ["I & E", "S & N", "F & T", "P & J"],
     captions = ["EQ & Filter.", "Reverb & Compression", "Octave High & Low", "Noise Reduction & Autotune"])
-        
+        st.session_state['button'] = False
+        st.checkbox('이해했어요!')
         if genre == "I & E":
             tabFirst_detail2()
             st.session_state['button'] = False
