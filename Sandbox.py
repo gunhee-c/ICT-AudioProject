@@ -15,10 +15,7 @@ else:
     st.write("Failed to load audio file.")
 
 #Dummy Data
-audio_mono, sr = lr.load(response.content, sr=None)
-audio_sample = audio_mono
-audio_length = 0
-activate_sampler = False
+
 
 tabFirst , tabSecond = st.tabs(["MBTI 보컬 이펙터 설명", "Upload your Audio"])
 
