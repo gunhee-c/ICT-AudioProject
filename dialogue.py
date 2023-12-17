@@ -30,9 +30,10 @@ def tabFirst_message():
             #if button("Button 3", key="button3"):
             #    st.write("All 3 buttons are pressed")
             #if button("Button 2", key="button2"):
-            st.session_state['button1'] = False
-            if st.button("다 봤습니다"):
 
+            if st.button("다 봤습니다"):
+                st.session_state['button1'] = False
+                st.write("한번더눌러주세요..!!")
 
 def tabFirst_detail():
     st.write("... 거짓말이었습니다")
