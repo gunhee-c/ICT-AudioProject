@@ -22,7 +22,7 @@ def tabFirst_message():
             with MBtab3:
                 tabFirst_FT()
             with MBtab4:
-                tabFirst_JP()
+                tabFirst_PJ()
 
             #if button("Button 3", key="button3"):
             #    st.write("All 3 buttons are pressed")
@@ -70,7 +70,7 @@ def tabFirst_FT():
     st.write("저는 사고적인 성격을 옥타브 아래 소리로 표현했습니다")
     st.write("저음을 추가해 더 묵직한 느낌이 들게 했습니다")
     st.write("")  
-def tabFirst_JP():
+def tabFirst_PJ():
     st.header("P & J")
     st.write("P는 인식적 성격을 의미합니다")
     st.write("저는 인식적인 P를 노이즈 캔슬링으로 표현했습니다")

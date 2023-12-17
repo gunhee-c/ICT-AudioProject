@@ -5,6 +5,14 @@ import numpy as np
 from Preprocess import *
 from TryMath import st_injection
 from dialogue import *
+
+def create_widget_set(key):
+    st.selectbox("Choose option", ["I: Phone-effect", "E: Add air, S: Reverb, N: Compressor", 
+                                   "F: Octave High", "T: Octave Low", "P: Noise Cancelling, J: Autotune, None"], 
+                                   key=f'select_{key}')
+    st.slider("Select a Value", min_value=0, max_value=100, key=f'slider_{key}')
+
+
 st.title('MBTI AUDIO EFFECTOR PROTOTYPE'':sunglasses:')
 # URL of the raw audio file on GitHub
 audio_file_url = 'https://github.com/gunhee-c/ICT-AudioProject/blob/main/Sample_IR2.wav?raw=true'
@@ -79,7 +87,17 @@ if activate_sampler == True:
 
         # Place slider in the second column
         with col2:
+            for i in range(st.session_state.num_widgets):
+                create_widget_set(i)
             slider_value = st.slider("Select a Value", min_value=0, max_value=100)
+            if 'num_widgets' not in st.session_state:
+                st.session_state.num_widgets = 3
+            # Add widget button
+            if st.button('Add Widget') and st.session_state.num_widgets < 9:
+                st.session_state.num_widgets += 1
+            # Remove widget button
+            if st.button('Remove Widget') and st.session_state.num_widgets > 1:
+                st.session_state.num_widgets -= 1
 
         # Display the selected values
         st.write(f"You selected {selected_option} and set the slider to {slider_value}.")
@@ -88,4 +106,14 @@ if activate_sampler == True:
         st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
 
 
+# Initialize session state for tracking widgets
+
+
+# Display the widgets
+
+
+# Optionally, display the current state of all widgets
+st.write("Current state of widgets:")
+for i in range(st.session_state.num_widgets):
+    st.write(f"Widget {i+1}: Option - {st.session_state[f'select_{i}']}, Value - {st.session_state[f'slider_{i}']}")
 
