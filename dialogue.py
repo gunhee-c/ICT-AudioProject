@@ -1,5 +1,5 @@
 import streamlit as st
-from streamlit import option_menu
+from streamlit_option_menu import option_menu
 
 def tabFirst_message():
     st.header('MBTI 보컬 이펙터 설명')

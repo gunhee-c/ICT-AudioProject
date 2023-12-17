@@ -5,3 +5,4 @@ matplotlib
 pydub
 noisereduce
 torch
+streamlit-option-menu
