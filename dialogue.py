@@ -7,26 +7,10 @@ def tabFirst_message():
     st.write('MBTI는 사람들의 성격을 16가지로 나누어 설명하는 것입니다')
     st.write('당신의 성격을 알아보는 것도 좋지만,')
     st.write('당신의 보컬을 알아보는 것도 좋지 않을까요?')
-
     with st.sidebar:
-        selected = option_menu(None, ["I & E", "S & N", "F & T", "J & P"])
+        selected = option_menu("Main Menu",  ["I & E", "S & N", "F & T", "J & P"], default_index=1)
         if selected == "I & E":
-            genre = st.radio(None, ["I", "E"],
-            index= "I")
-            if genre == "I":
-                    st.write("I는 내성적 성격을 의미합니다")
-                    st.write("저는 내성적인 I를 phone 필터로 표현했습니다")
-                    st.write("저음역대와 고음역대를 날려 조금은 답답한 느낌이 들게 했습니다")
-            else:
-                    st.write("E는 외향적 성격을 의미합니다")
-                    st.write("저는 외향적인 E를 air 필터로 표현했습니다")
-                    st.write("고음역대를 강조해 밝고 시원한 느낌이 들게 했습니다")
-        elif selected == "S & N":
-            st.write("페이지2")
-        elif selected == "F & T":
-            st.write("페이지3")
-        else:
-            st.write("페이지2")
+            st.write("당신의 보컬은 I형일까요? E형일까요?")
 
     if (st.button('자세히 알아보기!')):
         tabFirst_detail()
