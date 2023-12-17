@@ -21,9 +21,11 @@ def tabFirst_message():
 
         if st.button('어떻게?'):
 
-            tabFirst_detail2()
+
 
             st.session_state['button'] = False
+            
+            tabFirst_detail2()
 
             st.checkbox('이해했어요!')
 
@@ -49,8 +51,14 @@ def tabFirst_detail2():
         st.write("E는 외향적 성격을 의미합니다")
         st.write("저는 외향적인 E를 air 필터로 표현했습니다")
         st.write("고음역대를 강조해 밝고 시원한 느낌이 들게 했습니다")
+    elif mbti_show == "S & N":
+        st.write("S는 감각적 성격을 의미합니다")
+    elif mbti_show == "F & T":
+        st.write("F는 감정적 성격을 의미합니다")
+    elif mbti_show == "J & P":
+        st.write("J는 계획적 성격을 의미합니다")
     else:
-        st.write("You didn\'t select comedy.")
+        st.write("P는 즉흥적 성격을 의미합니다")
 
 
 
