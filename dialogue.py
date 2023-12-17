@@ -18,17 +18,15 @@ def tabFirst_message():
     if st.session_state['button'] == True:
 
         tabFirst_detail()
-        button2 = st.button('어떻게?')
-        if st.session_state.get('button') != True:
-            st.session_state['button'] = button1
-        if st.session_state['button'] == True:
-            tabFirst_detail2()
-
-            st.session_state['button'] = False
+        genre = st.radio(
+    "MBTI별 이펙트를 알아보세요",
+    ["I & E", "S & N", "F & T", "P & J"],
+    captions = ["EQ & Filter.", "Reverb & Compression", "Octave High & Low", "Noise Reduction & Autotune"])
+        st.session_state['button'] = False
             
 
 
-            st.checkbox('이해했어요!')
+        st.checkbox('이해했어요!')
 
 
 def tabFirst_detail():
@@ -40,27 +38,35 @@ def tabFirst_detail():
 
 
 def tabFirst_detail2():
-    mbti_show = st.radio(
-    "MBTI별 보컬 이펙팅을 알아보세요",
-    ["I & E", "S & N", "F & T", "J & P"],
-    captions = ["EQ와 필터", "리버브, 컴프레션", "옥타브 더블링", "오토튠, 노이즈 캔슬"])
-
-    if mbti_show == "I & E":
-        st.write("I는 내성적 성격을 의미합니다")
-        st.write("저는 내성적인 I를 phone 필터로 표현했습니다")
-        st.write("저음역대와 고음역대를 날려 조금은 답답한 느낌이 들게 했습니다")
-        st.write("E는 외향적 성격을 의미합니다")
-        st.write("저는 외향적인 E를 air 필터로 표현했습니다")
-        st.write("고음역대를 강조해 밝고 시원한 느낌이 들게 했습니다")
-    elif mbti_show == "S & N":
-        st.write("S는 감각적 성격을 의미합니다")
-    elif mbti_show == "F & T":
-        st.write("F는 감정적 성격을 의미합니다")
-    elif mbti_show == "J & P":
-        st.write("J는 계획적 성격을 의미합니다")
-    else:
-        st.write("P는 즉흥적 성격을 의미합니다")
-    st.session_state['button'] = False
+    st.header("I & E")
+    st.write("I는 내성적 성격을 의미합니다")
+    st.write("저는 내성적인 I를 phone 필터로 표현했습니다")
+    st.write("저음역대와 고음역대를 날려 조금은 답답한 느낌이 들게 했습니다")
+    st.write("")
+    st.write("E는 외향적 성격을 의미합니다")
+    st.write("저는 외향적인 E를 EQ 커브를 통해 표현했습니다")
+    st.write("고음역대를 강조해 밝고 시원한 느낌이 들게 했습니다")
+    st.write("")  
+    st.header("S & N")
+    st.write("S는 감각적 성격을 의미합니다")
+    st.write("저는 감각적인 S를 리버브로 표현했습니다")
+    st.write("잔향을 더해 목소리가 더 감각적으로 들리게 했습니다")
+    st.write("")
+    st.write("N은 직관적 성격을 의미합니다")
+    st.write("저는 직관적인 N을 컴프레서로 표현했습니다")
+    st.write("목소리 크기의 편차를 줄여 더 직관적으로 들리게 했습니다.")
+    st.write("")
+    st.header("F & T")
+    st.write("F는 감정적 성격을 의미합니다")
+    st.write("저는 감정적인 F를 딜레이로 표현했습니다")
+    st.write("저는 내성적인 I를 phone 필터로 표현했습니다")
+    st.write("저음역대와 고음역대를 날려 조금은 답답한 느낌이 들게 했습니다")
+    st.write("")
+    st.write("E는 외향적 성격을 의미합니다")
+    st.write("저는 외향적인 E를 air 필터로 표현했습니다")
+    st.write("고음역대를 강조해 밝고 시원한 느낌이 들게 했습니다")
+    st.write("")  
+    
 
 
 def tab1_message():
