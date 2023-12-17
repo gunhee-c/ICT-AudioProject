@@ -17,7 +17,7 @@ else:
 #Dummy Data
 activate_sampler = False
 
-tabFirst , tabSecond = st.tabs(["MBTI 보컬 이펙터 설명", "Upload your Audio"])
+tabFirst , tabSecond = st.tabs(["MBTI 보컬 이펙터란", "Upload your Audio"])
 
 with tabFirst:
     tabFirst_message()
