@@ -14,18 +14,16 @@ def tabFirst_message():
     if button("자세히 알아보기!", key="button1"):
         tabFirst_detail()
         if button("MBTI별 이펙트를 알아보세요", key="button2"):
-            genre = st.tabs(
-                            ["I & E", "S & N", "F & T", "P & J"]
-                            )
-
-            if genre == "I & E":
+            MBtab1, MBtab2, MBtab3, MBtab4 = st.tabs(["I & E", "S & N", "F & T", "P & J"])
+            with MBtab1:
                 tabFirst_IE()
-            elif genre == "S & N":
+            with MBtab2:
                 tabFirst_SN()
-            elif genre == "F & T":
+            with MBtab3:
                 tabFirst_FT()
-            else:
+            with MBtab4:
                 tabFirst_JP()
+
             #if button("Button 3", key="button3"):
             #    st.write("All 3 buttons are pressed")
             #if button("Button 2", key="button2"):
