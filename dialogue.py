@@ -7,13 +7,7 @@ def tabFirst_message():
     st.write('MBTI는 사람들의 성격을 16가지로 나누어 설명하는 것입니다')
     st.write('당신의 성격을 알아보는 것도 좋지만,')
     st.write('당신의 보컬을 알아보는 것도 좋지 않을까요?')
-    with st.sidebar:
-        selected = option_menu("Main Menu",  ["I & E", "S & N", "F & T", "J & P"], default_index=1)
-        if selected == "I & E":
-            st.write("당신의 보컬은 I형일까요? E형일까요?")
-        else:
-            st.write("당신의 보컬은 S형일까요? N형일까요?")
-        
+
     if (st.button('자세히 알아보기!')):
         tabFirst_detail()
 
@@ -27,7 +21,7 @@ def tabFirst_detail():
         tabFirst_detail2()
 
 def tabFirst_detail2():
-    pass
+    st.write("... 거짓말이었습니다")
 
 
 
