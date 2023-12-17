@@ -7,7 +7,7 @@ from TryMath import st_injection
 from dialogue import *
 
 def create_widget_set(key):
-    opt = st.selectbox(["I: Phone-effect", "E: Add air, S: Reverb, N: Compressor", 
+    opt = st.selectbox('Which effect will you choose: ', ["I: Phone-effect", "E: Add air", "S: Reverb", "N: Compressor", 
                                    "F: Octave High", "T: Octave Low", "P: Noise Cancelling, J: Autotune, None"], 
                                    key=f'select_{key}')
     rat = st.slider("Select a Value", min_value=0, max_value=100, key=f'slider_{key}')
