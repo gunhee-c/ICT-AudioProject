@@ -22,11 +22,24 @@ def tabFirst_message():
     "MBTI별 이펙트를 알아보세요",
     ["I & E", "S & N", "F & T", "P & J"],
     captions = ["EQ & Filter.", "Reverb & Compression", "Octave High & Low", "Noise Reduction & Autotune"])
-        st.session_state['button'] = False
-            
+        
+        if genre == "I & E":
+            tabFirst_detail2()
+            st.session_state['button'] = False
+            st.checkbox('이해했어요!')
 
-
-        st.checkbox('이해했어요!')
+        elif genre == "S & N":
+            tabFirst_detail2()
+            st.session_state['button'] = False
+            st.checkbox('이해했어요!')
+        elif genre == "F & T":
+            tabFirst_detail2()
+            st.session_state['button'] = False
+            st.checkbox('이해했어요!')
+        elif genre == "P & J":
+            tabFirst_detail2()
+            st.session_state['button'] = False
+            st.checkbox('이해했어요!')
 
 
 def tabFirst_detail():
