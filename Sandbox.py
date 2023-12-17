@@ -7,11 +7,11 @@ from TryMath import st_injection
 from dialogue import *
 
 def create_widget_set(key):
-    st.selectbox("Choose option", ["I: Phone-effect", "E: Add air, S: Reverb, N: Compressor", 
+    opt = st.selectbox("Choose option", ["I: Phone-effect", "E: Add air, S: Reverb, N: Compressor", 
                                    "F: Octave High", "T: Octave Low", "P: Noise Cancelling, J: Autotune, None"], 
                                    key=f'select_{key}')
-    st.slider("Select a Value", min_value=0, max_value=100, key=f'slider_{key}')
-
+    rat = st.slider("Select a Value", min_value=0, max_value=100, key=f'slider_{key}')
+    return [opt,rat]
 
 st.title('MBTI AUDIO EFFECTOR PROTOTYPE'':sunglasses:')
 # URL of the raw audio file on GitHub
@@ -77,6 +77,8 @@ if activate_sampler == True:
 
     with tab2:
         st.write("Combined Selectbox and Slider Widget")
+        MBTIinput = []
+        ratioinput = []
 
         # Create two columns
         col1, col2 = st.columns(2)
@@ -87,34 +89,25 @@ if activate_sampler == True:
 
         # Place slider in the second column
         with col2:
-            if 'num_widgets' not in st.session_state:
-                st.session_state.num_widgets = 3
-            for i in range(st.session_state.num_widgets):
-                create_widget_set(i)
-            slider_value = st.slider("Select a Value", min_value=0, max_value=100)
+            index = 1
+            for i in range(4):
+                ans = create_widget_set(index)
+                MBTIinput.append(ans[0])
+                ratioinput.append(ans[1])
+                index += 1
 
             # Add widget button
-            if st.button('Add Widget') and st.session_state.num_widgets < 9:
-                st.session_state.num_widgets += 1
+            if button('Add Widget', key="button4" ):
+                for i in range(4):
+                    ans = create_widget_set(index)
+                    MBTIinput.append(ans[0])
+                    ratioinput.append(ans[1])
+                    index += 1
             # Remove widget button
-            if st.button('Remove Widget') and st.session_state.num_widgets > 1:
-                st.session_state.num_widgets -= 1
 
-        # Display the selected values
-        st.write(f"You selected {selected_option} and set the slider to {slider_value}.")
     with tab3:
         st.header("An owl")
         st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
 
 
-# Initialize session state for tracking widgets
-
-
-# Display the widgets
-
-
-# Optionally, display the current state of all widgets
-st.write("Current state of widgets:")
-for i in range(st.session_state.num_widgets):
-    st.write(f"Widget {i+1}: Option - {st.session_state[f'select_{i}']}, Value - {st.session_state[f'slider_{i}']}")
-
+#
