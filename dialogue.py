@@ -14,7 +14,7 @@ def tabFirst_message():
     if button("자세히 알아보기!", key="button1"):
         tabFirst_detail()
         if button("MBTI별 이펙트를 알아보세요", key="button2"):
-            genre = st.radio(
+            genre = st.tabs(
                             " ",
                             ["I & E", "S & N", "F & T", "P & J"],
                             captions = ["EQ & Filter.", "Reverb & Compression", "Octave High & Low", "Noise Reduction & Autotune"])
