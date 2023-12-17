@@ -1,5 +1,6 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
+from streamlit_extras.stateful_button import button
 
 def tabFirst_message():
     st.header('MBTI 보컬 이펙터 설명')
@@ -10,7 +11,10 @@ def tabFirst_message():
 
 
     button1 = st.button('자세히 알아보기!')
-
+    if button("Button 1", key="button1"):
+        if button("Button 2", key="button2"):
+            if button("Button 3", key="button3"):
+                st.write("All 3 buttons are pressed")
     if st.session_state.get('button') != True:
 
         st.session_state['button'] = button1
