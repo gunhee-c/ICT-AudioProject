@@ -4,8 +4,7 @@ def tabFirst_message():
     st.header('MBTI 보컬 이펙터 설명')
     st.write('MBTI 컨셉을 이용해 당신의 보컬 소리에 이펙트를 넣어보세요')
     st.write('당신의 보컬을 더욱 더 멋지게 만들어줄 것입니다')
-    st.button('자세히 알아보기')
-    if (st.button):
+    if (st.button('자세히 알아보기')):
         st.write('자세한 설명을 보여줄 것입니다')
 
 def tab1():
