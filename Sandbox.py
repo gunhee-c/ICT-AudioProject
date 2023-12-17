@@ -15,10 +15,10 @@ with tabFirst:
     st.write('MBTI 컨셉을 이용해 당신의 보컬 소리에 이펙트를 넣어보세요')
     st.write('당신의 보컬을 더욱 더 멋지게 만들어줄 것입니다')
 with tabSecond:
-    audio_moto = None
+    audio_mono = None
     audio_sample = None
-    sr = None
-    audio_length = None
+    sr = 44100
+    audio_length = 0
     activate_sampler = False
     [audio_mono, audio_sample, sr, audio_length, activate_sampler] = main_preprocess()   
 
