@@ -5,6 +5,7 @@ import soundfile as sf
 import matplotlib.pyplot as plt
 import io
 import os
+import requests
 
 #TODO
 """
@@ -81,6 +82,16 @@ def validate_start_end(full, start, end):
 ###################################
 def main_preprocess():
 
+
+# URL of the raw audio file on GitHub
+    audio_file_url = 'https://github.com/gunhee-c/ICT-AudioProject/blob/main/Sample_IR2.wav?raw=true'
+    response = requests.get(audio_file_url)
+    if response.status_code == 200:
+        st.audio(response.content, format='audio/wav')
+    else:
+        st.write("Failed to load audio file.")
+# Send a GET request to the URL
+
     # Header 적용
     st.header('Upload your Audio:')
 
@@ -118,4 +129,5 @@ def main_preprocess():
             play_librosa_audio(audio_sample, sr)
             show_waveform(audio_sample, sr)  
     #[Audio_Original, Audio_Segment, sr, Audio_Length, Audio_Start, Audio_End, Boolean]
-    return "엄준식"
+            
+    return [audio_mono, audio_sample, sr, audio_length, activate_sampler]

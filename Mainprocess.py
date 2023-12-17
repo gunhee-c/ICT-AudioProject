@@ -1,5 +1,5 @@
 
-
+import streamlit as st
 import librosa as lr
 import numpy as np
 import scipy.signal as signal
@@ -224,3 +224,9 @@ def autotune(audio, sr, ratio, plot=False):
     # Pitch-shifting using the PSOLA algorithm.
     return summing(audio, modified, ratio, adder = 1)
 
+def doAudioProcess(audio_mono, audio_sample, sr):
+    st.title('Now we are talking')
+    st.write('Choose the effect you want to apply to your audio')
+    st.write('You can adjust the ratio of the effect you want to apply')
+    st.write('You can apply multiple effects to your audio')
+    
