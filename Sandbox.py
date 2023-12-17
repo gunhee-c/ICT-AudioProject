@@ -15,7 +15,7 @@ else:
     st.write("Failed to load audio file.")
 
 #Dummy Data
-
+activate_sampler = False
 
 tabFirst , tabSecond = st.tabs(["MBTI 보컬 이펙터 설명", "Upload your Audio"])
 
@@ -52,7 +52,7 @@ with tabSecond:
         start_sample = st.number_input('From which second do you want to sample?')
         end_sample = st.number_input('To which second do you want to sample?')
 
-        activate_sampler = False
+        
         if st.button('Get your Sample!'):
             activate_sampler = validate_start_end(audio_length, start_sample, end_sample)
         
