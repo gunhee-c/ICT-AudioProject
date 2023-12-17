@@ -31,7 +31,7 @@ def tabFirst_message():
             #    st.write("All 3 buttons are pressed")
             #if button("Button 2", key="button2"):
             if st.button("다 봤습니다"):
-                button1 = True
+                st.session_state['button1'] = False
 
 def tabFirst_detail():
     st.write("... 거짓말이었습니다")
@@ -51,6 +51,21 @@ def tabFirst_detail2():
     st.write("저는 외향적인 E를 EQ 커브를 통해 표현했습니다")
     st.write("고음역대를 강조해 밝고 시원한 느낌이 들게 했습니다")
     st.write("")  
+
+
+
+def tab1_message():
+    st.header("How To Use")
+    st.write("먼저 당신이 자른 샘플을 이용해 이펙트가 효과적인지 확인하세요")
+    st.write("2번 탭에서 오디오의 MBTI 이펙팅을 하나씩 넣어주세요.")
+    st.write("ratio에 대해서는 0과 100 사이의 값을 넣어주세요.")
+    st.write("이펙트를 적용시키면서 파형과 스펙트로그램을 확인할 수 있습니다")
+    st.write("이펙트를 적용시킨 결과를 들어볼 수 있습니다.")
+    st.write("만족하시면 3번 탭에서 오디오를 들어보고 다운로드 받으세요")
+    st.write("만족하지 않으시면 다시 2번 탭으로 돌아가서 이펙트를 조정하세요")
+
+
+def second():
     st.header("S & N")
     st.write("S는 감각적 성격을 의미합니다")
     st.write("저는 감각적인 S를 리버브로 표현했습니다")
@@ -71,16 +86,3 @@ def tabFirst_detail2():
     st.write("고음역대를 강조해 밝고 시원한 느낌이 들게 했습니다")
     st.write("")  
     
-
-
-def tab1_message():
-    st.header("How To Use")
-    st.write("먼저 당신이 자른 샘플을 이용해 이펙트가 효과적인지 확인하세요")
-    st.write("2번 탭에서 오디오의 MBTI 이펙팅을 하나씩 넣어주세요.")
-    st.write("ratio에 대해서는 0과 100 사이의 값을 넣어주세요.")
-    st.write("이펙트를 적용시키면서 파형과 스펙트로그램을 확인할 수 있습니다")
-    st.write("이펙트를 적용시킨 결과를 들어볼 수 있습니다.")
-    st.write("만족하시면 3번 탭에서 오디오를 들어보고 다운로드 받으세요")
-    st.write("만족하지 않으시면 다시 2번 탭으로 돌아가서 이펙트를 조정하세요")
-
-
