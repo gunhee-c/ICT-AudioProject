@@ -6,3 +6,8 @@ pydub
 noisereduce
 torch
 streamlit-option-menu
+psola 
+noisereduce
+torch 
+scipy.io 
+scipy.signal
