@@ -24,8 +24,8 @@ def tabFirst_detail():
 
 def tabFirst_detail2():
     with st.sidebar:
-        choice = option_menu(None, ["I & E", "S & N", "F & T", "J & P"])
-        if choice == "I & E":
+        selected = option_menu(None, ["I & E", "S & N", "F & T", "J & P"])
+        if selected == "I & E":
             genre = st.radio(None, ["I", "E"],
             index= "I")
             if genre == "I":
@@ -36,9 +36,9 @@ def tabFirst_detail2():
                     st.write("E는 외향적 성격을 의미합니다")
                     st.write("저는 외향적인 E를 air 필터로 표현했습니다")
                     st.write("고음역대를 강조해 밝고 시원한 느낌이 들게 했습니다")
-        elif choice == "S & N":
+        elif selected == "S & N":
             st.write("페이지2")
-        elif choice == "F & T":
+        elif selected == "F & T":
             st.write("페이지3")
         else:
             st.write("페이지2")
