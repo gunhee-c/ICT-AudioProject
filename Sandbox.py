@@ -65,7 +65,7 @@ if activate_sampler == True:
     tab1, tab2, tab3 = st.tabs(["How to use", "Main", "Export"])
 
     with tab1:
-        
+        st.button("text")
 
         st.header("A cat")
         st.image("https://static.streamlit.io/examples/cat.jpg", width=200)
