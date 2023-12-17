@@ -15,9 +15,8 @@ def tabFirst_message():
         tabFirst_detail()
         if button("MBTI별 이펙트를 알아보세요", key="button2"):
             genre = st.tabs(
-                            " ",
-                            ["I & E", "S & N", "F & T", "P & J"],
-                            captions = ["EQ & Filter.", "Reverb & Compression", "Octave High & Low", "Noise Reduction & Autotune"])
+                            ["I & E", "S & N", "F & T", "P & J"]
+                            )
 
             if genre == "I & E":
                 tabFirst_IE()
