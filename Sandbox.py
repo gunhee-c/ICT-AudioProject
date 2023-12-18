@@ -112,7 +112,7 @@ with tab2:
         st.write("Choose less than 9 effects")
     else:
         st.write("Choose your effects")
-        index = 1
+        index = 0
         for i in range(numEffects):
             ans = create_widget_set(index)
             MBTIinput.append(ans[0])
