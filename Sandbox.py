@@ -154,6 +154,7 @@ with tab3:
         audio_visualize(getAudio, sr, "test")
         getAudio2 = air(audio_sample, sr, 100)
         audio_visualize(getAudio2, sr, "test2")
+        st.write("Testing Reverb")
         getAudio3 = reverb(audio_sample, sr, IR_audio, IR_sr, 30)
         audio_visualize(getAudio3, sr, "test3")
         getAudio4 = compressor(audio_sample, sr, 50)
