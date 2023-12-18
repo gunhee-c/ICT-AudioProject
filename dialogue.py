@@ -12,7 +12,7 @@ def tabFirst_message():
 
 
     tabFirst_detail()
-    with st.expandder("MBTI별 이펙트를 알아보세요");
+    with st.expander("MBTI별 이펙트를 알아보세요");
         MBtab1, MBtab2, MBtab3, MBtab4 = st.tabs(["I & E", "S & N", "F & T", "P & J"])
         with MBtab1:
             tabFirst_IE()
