@@ -32,30 +32,30 @@ def audio_visualize(data, sr, var):
             show_waveform(data, sr)
 
 def audio_processor(audio, sr, ratio, command, IR_audio, IR_sr):
-    st.write("Hello")
+    #st.write("Hello")
     if command == "I: Phone-effect":
-        st.write("Phone Effect on Action")
+        #st.write("Phone Effect on Action")
         return phone(audio, sr, ratio)
     if command == "E: Add air":
-        st.write("Air Effect on Action")
+        #st.write("Air Effect on Action")
         return air(audio, sr, ratio)
     if command == "S: Reverb":
-        st.write("Reverb Effect on Action")
+        #st.write("Reverb Effect on Action")
         return reverb(audio, sr, IR_audio, IR_sr, ratio)
     if command == "N: Compressor":
-        st.write("Compressor Effect on Action")
+        #st.write("Compressor Effect on Action")
         return compressor(audio, sr, ratio)
     if command == "F: Octave High":
-        st.write("Octave High Effect on Action")
+        #st.write("Octave High Effect on Action")
         return octHigh(audio, sr, ratio)
     if command == "T: Octave Low":
-        st.write("Octave Low Effect on Action")
+        #st.write("Octave Low Effect on Action")
         return octLow(audio, sr, ratio)
     if command == "P: Noise Cancelling":
-        st.write("Noise Cancelling Effect on Action")
+        #st.write("Noise Cancelling Effect on Action")
         return noisereduce(audio, sr, ratio)
     if command == "J: Autotune":
-        st.write("Autotune Effect on Action")
+        #st.write("Autotune Effect on Action")
         return autotune(audio, sr, ratio)
 
 
@@ -178,10 +178,10 @@ with tab3:
                 st.write("Effect: " + MBTIinput[i] + " Ratio: " + str(ratioinput[i]))
                 #processed_audio = processed_audio.squeeze() 
                 
-                audio_visualize(current_audio, sr, f"audioSampleProgress{i+1}")
+                audio_visualize(processed_audio, sr, f"audioSampleProgress{i+1}")
                 current_audio = processed_audio
                 st.write("")
-
+        st.write("The Audio above is your final result")
         """
         getAudio = phone(audio_sample, sr, 100)
         audio_visualize(getAudio, sr, "test")
