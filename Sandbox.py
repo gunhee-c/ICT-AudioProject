@@ -160,6 +160,7 @@ with tab3:
         st.write("Check your Effector Chain step by step:")
         #audio_print = [audio_sample]
         current_audio = audio_sample
+        audio_visualize(current_audio, sr, "audioSampleProgress0")
         for i in range(index):
             if MBTIinput[i] != "None":
                 processed_audio = audio_processor(current_audio, sr, ratioinput[i], MBTIinput[i], IR_audio, IR_sr)
