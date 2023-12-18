@@ -207,7 +207,7 @@ with tab4:
         st.header("Start Exporting your audio")
         fin = st.checkbox("Let's do it!")
         if fin == True:
-            st.write("Downloading...")
+            st.write("Processing...")
             current_audio_final = audio_mono
 
             for i in range(index):
@@ -218,7 +218,7 @@ with tab4:
             Final_audio = normalize(current_audio_final, sr, 1)
             st.write("Export your audio")
             with st.expander("Check your final result with whole audio:"):
-                audio_visualize(Final_audio, sr, "audioSampleProgressFinal")
+                audio_visualize(Final_audio, sr, "audioProgressFinal")
         
             st.write("Do you wish to Download?")
             download = st.checkbox("Download")
