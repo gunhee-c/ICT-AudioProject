@@ -48,6 +48,7 @@ activate_sampler = False
 tabFirst , tabSecond = st.tabs(["MBTI 보컬 이펙터?", "Upload your Audio"])
 
 with tabFirst:
+
     tabFirst_message()
 
 with tabSecond:
@@ -80,20 +81,22 @@ with tabSecond:
         end_sample = st.number_input('To which second do you want to sample?')
 
         
-        if st.button('Get your Sample!', key="button3"):
+        if button('Get your Sample!', key="button3"):
             activate_sampler = validate_start_end(audio_length, start_sample, end_sample)
         
-        if activate_sampler == True:
-            st.success('Your sample length is legitimate.')
-            audio_sample = cut_audio(audio_mono, sr, start_sample, end_sample)
-            #play_librosa_audio(audio_sample, sr)
-            audio_visualize(audio_sample, sr, "audio_cut")
-            main_data = [audio_mono, audio_sample, sr, audio_length, activate_sampler]  
+    if activate_sampler == True:
+        st.success('Your sample length is legitimate.')
+        audio_sample = cut_audio(audio_mono, sr, start_sample, end_sample)
+        #play_librosa_audio(audio_sample, sr)
+        audio_visualize(audio_sample, sr, "audio_cut")
+        main_data = [audio_mono, audio_sample, sr, audio_length, activate_sampler]  
 
 
 tab1, tab2, tab3 = st.tabs(["How to use", "Main", "Export"])
 
 with tab1:
+    if activate_sampler == True:
+        st.header('Your Sample Audio:')
     tab1_message()
 
 with tab2:
