@@ -15,11 +15,13 @@ def create_widget_set(key):
     return [opt,rat]
 
 def audio_visualize(data, sr, var):
-    var = st.toggle('Check your audio!')
+    keyv = "toggle" + var
+    keyr = "radio" + var
+    var = st.toggle('Check your audio!', key = keyv)
 
     if var:
         play_librosa_audio(data, sr)
-        vis = st.radio('View Your Audio Image:', ["none","Waveform", "Spectrogram" ])
+        vis = st.radio('View Your Audio Image:', ["none","Waveform", "Spectrogram" ], key=keyr)
         if vis == "none":
             st.write("Choose your Visualization mode")
         if vis == "Spectrogram":
