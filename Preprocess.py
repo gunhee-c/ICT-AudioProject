@@ -30,7 +30,7 @@ def play_librosa_audio(y, sr):
     
 #
 def show_waveform(audio, sr):
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(10, 3))
     time = lr.samples_to_time(range(len(audio)), sr=sr)
     ax.plot(time, audio)
     ax.set(xlabel = 'Time (s)', ylabel = 'Sound Amplitude')
@@ -60,7 +60,7 @@ def show_spectrogram(audio, sr):
     dB = lr.amplitude_to_db(S, ref=np.max)
 
     # Create the plot
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(10, 3))
     img = lr.display.specshow(dB, sr=sr, x_axis='time', y_axis='log', ax=ax)
     ax.set(title='Spectrogram')
     fig.colorbar(img, ax=ax, format="%+2.0f dB")
