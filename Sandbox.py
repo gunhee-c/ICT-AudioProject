@@ -159,6 +159,7 @@ with tab2:
         if agree:
             st.write('Great!')
             chain_processed = True
+            index = numEffects
 
 
 
@@ -171,6 +172,8 @@ with tab3:
         current_audio = audio_sample
         with st.expander("Process #0: Original Audio"):
             audio_visualize(current_audio, sr, "audioSampleProgress0")
+        st.write("")
+        st.write("")
         for i in range(index):
             #st.write("MBTIinput[i]:" + MBTIinput[i] + " ratioinput[i]:" + str(ratioinput[i]))
             if MBTIinput[i] != "None":
