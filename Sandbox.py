@@ -13,6 +13,17 @@ def create_widget_set(key):
     rat = st.slider("Select a Value", min_value=0, max_value=100, key=f'slider_{key}')
     return [opt,rat]
 
+def audio_visualize(data):
+
+    on = st.toggle('Visualize your Audio')
+
+    if on:
+        st.radio('Feature activated!', ["Waveform", "Spectrogram" ])
+        show_waveform(audio_mono, sr)
+        show_spectrogram(audio_mono, sr)
+
+
+
 st.title('MBTI AUDIO EFFECTOR PROTOTYPE'':sunglasses:')
 # URL of the raw audio file on GitHub
 audio_file_url = 'https://github.com/gunhee-c/ICT-AudioProject/blob/main/Sample_IR2.wav?raw=true'
@@ -73,8 +84,13 @@ with tabSecond:
 tab1, tab2, tab3 = st.tabs(["How to use", "Main", "Export"])
 
 with tab1:
-     tab1_message()
+    tab1_message()
+    agree = st.checkbox('I agree')
 
+    if agree:
+        st.write('Great!')
+    else:
+        st.write('Not great!')
 with tab2:
     st.write("Combined Selectbox and Slider Widget")
     MBTIinput = []
