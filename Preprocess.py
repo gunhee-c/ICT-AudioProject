@@ -74,6 +74,18 @@ def cut_audio(audio, sr, start_sec, end_sec):
     end_sample = int(end_sec * sr)
     # Extract the desired segment
     segment = audio[start_sample:end_sample]
+
+    
+    fade_duration = 0.01  # Fade duration in seconds, e.g., 10ms
+    fade_length = int(fade_duration * sr)  # Convert fade duration to number of samples
+
+    # Apply fade-in
+    fade_in = np.linspace(0, 1, fade_length)
+    segment[:fade_length] *= fade_in
+
+    # Apply fade-out
+    fade_out = np.linspace(1, 0, fade_length)
+    segment[-fade_length:] *= fade_out
     return segment
 
 

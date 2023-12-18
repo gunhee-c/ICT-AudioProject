@@ -171,7 +171,7 @@ with tab3:
         current_audio = audio_sample
         audio_visualize(current_audio, sr, "audioSampleProgress0")
         for i in range(index):
-            st.write("MBTIinput[i]:" + MBTIinput[i] + " ratioinput[i]:" + str(ratioinput[i]))
+            #st.write("MBTIinput[i]:" + MBTIinput[i] + " ratioinput[i]:" + str(ratioinput[i]))
             if MBTIinput[i] != "None":
                 processed_audio = audio_processor(current_audio, sr, ratioinput[i], MBTIinput[i], IR_audio, IR_sr)
                 st.write("Process #" + str(i+1))
@@ -182,25 +182,6 @@ with tab3:
                 current_audio = processed_audio
                 st.write("")
         st.write("The Audio above is your final result")
-        """
-        getAudio = phone(audio_sample, sr, 100)
-        audio_visualize(getAudio, sr, "test")
-        getAudio2 = air(audio_sample, sr, 100)
-        audio_visualize(getAudio2, sr, "test2")
-        st.write("Testing Reverb")
-        getAudio3 = reverb(audio_sample, sr, IR_audio, IR_sr, 30)
-        audio_visualize(getAudio3, sr, "test3")
-        getAudio4 = compressor(audio_sample, sr, 50)
-        audio_visualize(getAudio4, sr, "test4")
-        getAudio5 = octHigh(audio_sample, sr, 100)
-        audio_visualize(getAudio5, sr, "test5")
-        getAudio6 = octLow(audio_sample, sr, 50)
-        audio_visualize(getAudio6, sr, "test6")
-        getAudio7 = noisereduce(audio_sample, sr, 50)
-        audio_visualize(getAudio7, sr, "test7")
-        getAudio8 = autotune(audio_sample, sr, 100)
-        audio_visualize(getAudio8, sr, "test8")
-"""
 
 #
 
