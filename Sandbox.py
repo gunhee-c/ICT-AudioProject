@@ -20,13 +20,14 @@ def audio_visualize(data, sr):
     if on:
         play_librosa_audio(data, sr)
         vis = st.radio('View Your Audio Image:', ["none","Waveform", "Spectrogram" ])
-        if vis == 'Spectrogram':
+        if vis == "none":
+            st.write("Choose your Visualization mode")
+        if vis == "Spectrogram":
             st.write('View Audio Spectrogram')
             show_spectrogram(data, sr)
-        elif vis == 'Waveform':
+        elif vis == "Waveform":
             st.write('View Audio Waveform')
             show_waveform(data, sr)
-    st.write('You selected comedy.')
 
 
 
@@ -84,7 +85,7 @@ with tabSecond:
             st.success('Your sample length is legitimate.')
             audio_sample = cut_audio(audio_mono, sr, start_sample, end_sample)
             #play_librosa_audio(audio_sample, sr)
-            audio_visualize(audio_mono, sr)
+            audio_visualize(audio_sample, sr)
             main_data = [audio_mono, audio_sample, sr, audio_length, activate_sampler]  
 
 
