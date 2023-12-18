@@ -224,6 +224,17 @@ def autotune(audio, sr, ratio, plot=False):
     # Pitch-shifting using the PSOLA algorithm.
     return summing(audio, modified, ratio, adder = 1)
 
+def normalize(audio, sr, target = 0.5):
+
+    max_amp = np.max(np.abs(audio))
+    normalized_audio = np.zeros(len(audio))
+    #print(len(audio))
+    #print(np.arange(max_amp))
+    for i in range(len(audio)):
+        normalized_audio[i] = audio[i]/ (max_amp * (1/target))
+    
+    return normalized_audio
+
 def doAudioProcess(audio_mono, audio_sample, sr):
     st.title('Now we are talking')
     st.write('Choose the effect you want to apply to your audio')

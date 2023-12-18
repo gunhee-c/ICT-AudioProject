@@ -178,6 +178,7 @@ with tab3:
             #st.write("MBTIinput[i]:" + MBTIinput[i] + " ratioinput[i]:" + str(ratioinput[i]))
             if MBTIinput[i] != "None":
                 processed_audio = audio_processor(current_audio, sr, ratioinput[i], MBTIinput[i], IR_audio, IR_sr)
+                normalize(processed_audio, sr, 0.5)
                 progstr = ("Process #" + str(i+1) + ": " + MBTIinput[i] + " Ratio: " + str(ratioinput[i]))
                 with st.expander(progstr):
                     audio_visualize(processed_audio, sr, f"audioSampleProgress{i+1}")
@@ -186,9 +187,11 @@ with tab3:
                 #audio_visualize(processed_audio, sr, f"audioSampleProgress{i+1}")
                 current_audio = processed_audio
                 st.write("")
-        st.write("The Audio above is your final result")
-
-#
+        
+        st.write("The Audio below is your final result")
+        current_audio = normalize(current_audio, sr, 1)
+        audio_visualize(current_audio, sr, "audioSampleProgressFinal")
+#       
 
 
 #"None", "I: Phone-effect", "E: Add air", "S: Reverb", "N: Compressor", 
