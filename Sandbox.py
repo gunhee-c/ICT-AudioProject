@@ -33,20 +33,28 @@ def audio_visualize(data, sr, var):
 
 def audio_processor(audio, sr, ratio, command, IR_audio, IR_sr):
     if command == "I:Phone-effect":
+        st.write("Phone Effect on Action")
         return phone(audio, sr, ratio)
     if command == "E:Add air":
+        st.write("Air Effect on Action")
         return air(audio, sr, ratio)
     if command == "S:Reverb":
+        st.write("Reverb Effect on Action")
         return reverb(audio, sr, IR_audio, IR_sr, ratio)
     if command == "N:Compressor":
+        st.write("Compressor Effect on Action")
         return compressor(audio, sr, ratio)
     if command == "F:Octave High":
+        st.write("Octave High Effect on Action")
         return octHigh(audio, sr, ratio)
     if command == "T:Octave Low":
+        st.write("Octave Low Effect on Action")
         return octLow(audio, sr, ratio)
     if command == "P:Noise Cancelling":
+        st.write("Noise Cancelling Effect on Action")
         return noisereduce(audio, sr, ratio)
     if command == "J:Autotune":
+        st.write("Autotune Effect on Action")
         return autotune(audio, sr, ratio)
 
 
@@ -169,7 +177,7 @@ with tab3:
                 #processed_audio = processed_audio.squeeze() 
                 
                 audio_visualize(current_audio, sr, f"audioSampleProgress{i+1}")
-                #current_audio = processed_audio
+                current_audio = processed_audio
                 st.write("")
 
         """
