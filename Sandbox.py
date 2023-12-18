@@ -89,8 +89,8 @@ with tabSecond:
         end_sample = st.number_input('To which second do you want to sample?')
 
         
-        if st.button('Get your Sample!', key="button3"):
-            activate_sampler = validate_start_end(audio_length, start_sample, end_sample)
+        #if st.button('Get your Sample!', key="button3"):
+        activate_sampler = validate_start_end(audio_length, start_sample, end_sample)
         
     if activate_sampler == True:
         st.success('Your sample length is legitimate.')
