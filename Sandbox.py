@@ -124,10 +124,10 @@ with tab2:
             MBTIinput.append(ans[0])
             ratioinput.append(ans[1])
             index += 1
-
-        if st.button("Finished making Effector Chain"):
+        agree = st.checkbox("Finished making Effector Chain")
+        if agree:
+            st.write('Great!')
             chain_processed = True
-
 
 
 
