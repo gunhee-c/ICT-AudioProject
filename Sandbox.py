@@ -239,18 +239,21 @@ with tab4:
             audio_expander(Final_audio, sr, "audioProgressFinal", "최종 결과(전체):")
         
             st.write("Do you wish to Download?")
-            download = st.checkbox("Download")
-            if download:
-                st.write("Downloading...")
-                tmp_path = "processed_audio.wav"
-                lr.output.write_wav(tmp_path, Final_audio, sr)
 
-                with open(tmp_path, "rb") as file:
+            download = st.checkbox("Download")
+
+            if download:
+                output_file = 'output_audio.wav'
+                sf.write(output_file, Final_audio, sr)
+                st.write("Downloading...")
+
+
+                with open(output_file, "rb") as file:
                     btn = st.download_button(
                                                 label="Download Audio",
                                                 data=file,
                                                 file_name="processed_audio.wav",
-                                                mime="audio/wav"
+                                                mime="audio/mpeg"
                                             )
 
                 
