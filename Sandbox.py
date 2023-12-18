@@ -174,11 +174,12 @@ with tab3:
             #st.write("MBTIinput[i]:" + MBTIinput[i] + " ratioinput[i]:" + str(ratioinput[i]))
             if MBTIinput[i] != "None":
                 processed_audio = audio_processor(current_audio, sr, ratioinput[i], MBTIinput[i], IR_audio, IR_sr)
-                st.write("Process #" + str(i+1))
-                st.write("Effect: " + MBTIinput[i] + " Ratio: " + str(ratioinput[i]))
+                progstr = ("Process #" + str(i+1) + ": " + MBTIinput[i] + " Ratio: " + str(ratioinput[i]))
+                with st.expander("See Details: "):
+                    audio_visualize(processed_audio, sr, f"audioSampleProgress{i+1}")
                 #processed_audio = processed_audio.squeeze() 
                 
-                audio_visualize(processed_audio, sr, f"audioSampleProgress{i+1}")
+                #audio_visualize(processed_audio, sr, f"audioSampleProgress{i+1}")
                 current_audio = processed_audio
                 st.write("")
         st.write("The Audio above is your final result")
