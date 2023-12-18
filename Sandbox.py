@@ -31,6 +31,23 @@ def audio_visualize(data, sr, var):
             #st.write('View Audio Waveform')
             show_waveform(data, sr)
 
+def audio_processor(audio, sr, ratio, command, IR_audio, IR_sr):
+    if command == "I:Phone-effect":
+        return phone(audio, sr, ratio)
+    if command == "E:Add air":
+        return air(audio, sr, ratio)
+    if command == "S:Reverb":
+        return reverb(audio, sr, IR_audio, IR_sr, ratio)
+    if command == "N:Compressor":
+        return compressor(audio, sr, ratio)
+    if command == "F:Octave High":
+        return octHigh(audio, sr, ratio)
+    if command == "T:Octave Low":
+        return octLow(audio, sr, ratio)
+    if command == "P:Noise Cancelling":
+        return noisereduce(audio, sr, ratio)
+    if command == "J:Autotune":
+        return autotune(audio, sr, ratio)
 
 
 st.title('MBTI AUDIO EFFECTOR PROTOTYPE'':sunglasses:')
@@ -103,7 +120,7 @@ with tabSecond:
 if activate_sampler == False:
     st.header("먼저 샘플을 업로드 해주세요")
 
-tab1, tab2, tab3 = st.tabs(["How to use", "Main", "Export"])
+tab1, tab2, tab3, tab4 = st.tabs(["How to use", "Main", "See Progress", "Export"])
 
 with tab1:
     tab1_message()
@@ -143,14 +160,17 @@ with tab3:
     if chain_processed == False:
         st.write("Choose your effects first")
     else:
+        st.write("Check your Effector Chain step by step:")
+        current_audio = []
+        current_audio.append = audio_sample
         for i in range(index):
-            st.write("I remember IR")
-            st.write(IR_length)
-            st.write(MBTIinput[i])
-            st.write(ratioinput[i])
+            current_audio.append(audio_processor(audio_sample, sr, ratioinput[i], MBTIinput[i], IR_audio, IR_sr))
+            st.write("Procees #" + str(i+1))
+            st.write("Effect: " + MBTIinput[i] + " Ratio: " + str(ratioinput[i]))
+            audio_visualize(current_audio[i+1])
             st.write("")
-        st.header("An owl")
-        st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
+
+        """
         getAudio = phone(audio_sample, sr, 100)
         audio_visualize(getAudio, sr, "test")
         getAudio2 = air(audio_sample, sr, 100)
@@ -168,6 +188,10 @@ with tab3:
         audio_visualize(getAudio7, sr, "test7")
         getAudio8 = autotune(audio_sample, sr, 100)
         audio_visualize(getAudio8, sr, "test8")
-
+"""
 
 #
+
+
+#"None", "I: Phone-effect", "E: Add air", "S: Reverb", "N: Compressor", 
+#"F: Octave High", "T: Octave Low", "P: Noise Cancelling", "J: Autotune"
