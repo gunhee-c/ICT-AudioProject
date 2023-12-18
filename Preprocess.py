@@ -37,7 +37,7 @@ def show_waveform(audio, sr):
     plt.tight_layout()
     # Show plot in Streamlit
     st.pyplot(fig)
-
+"""
 def show_spectrogram(audio, sr):
     fig, ax = plt.sublots()
     S = lr.feature.melspectrogram(y=audio, sr=sr)
@@ -50,6 +50,23 @@ def show_spectrogram(audio, sr):
     plt.tight_layout()
     st.pyplot(fig)
     plt.show()
+"""
+
+def show_spectrogram(audio, sr):
+    # Compute the spectrogram
+    S = np.abs(lr.stft(audio))
+
+    # Convert to dBs
+    dB = lr.amplitude_to_db(S, ref=np.max)
+
+    # Create the plot
+    fig, ax = plt.subplots()
+    img = lr.display.specshow(dB, sr=sr, x_axis='time', y_axis='log', ax=ax)
+    ax.set(title='Spectrogram')
+    fig.colorbar(img, ax=ax, format="%+2.0f dB")
+
+    # Show the plot in Streamlit
+    st.pyplot(fig)
 
 #c
 def cut_audio(audio, sr, start_sec, end_sec):
