@@ -225,7 +225,7 @@ with tab4:
         st.header("Start Exporting your audio")
         fin = st.checkbox("Let's do it!")
         if fin == True:
-            st.write("Processing...")
+            st.write("Processing takes more than miutes. please wait")
             current_audio_final = audio_mono
 
             for i in range(index):
