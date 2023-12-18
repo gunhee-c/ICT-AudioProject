@@ -3,6 +3,7 @@ import librosa as lr
 import numpy as np
 
 from Preprocess import *
+from Mainprocess import *
 from TryMath import st_injection
 from dialogue import *
 
@@ -14,19 +15,19 @@ def create_widget_set(key):
     return [opt,rat]
 
 def audio_visualize(data, sr):
-    on = st.toggle('Your Audio Image:')
+    on = st.toggle('Check your audio!')
 
     if on:
-        st.radio('Feature activated!', ["Waveform", "Spectrogram" ])
-        agree = st.checkbox('View Spectrogram')
-
-        if agree:
+        play_librosa_audio(data, sr)
+        vis = st.radio('View Your Audio Image:', ["none","Waveform", "Spectrogram" ])
+        if vis == 'Spectrogram':
             st.write('View Audio Spectrogram')
             show_spectrogram(data, sr)
-        else:
+        elif vis == 'Waveform':
             st.write('View Audio Waveform')
-            
             show_waveform(data, sr)
+    st.write('You selected comedy.')
+
 
 
 st.title('MBTI AUDIO EFFECTOR PROTOTYPE'':sunglasses:')
@@ -66,7 +67,7 @@ with tabSecond:
 
         #How long is the audio
         st.write("Length of the original audio (Seconds): " + str(round(audio_length)) )
-        play_librosa_audio(audio_mono, sr)
+        #play_librosa_audio(audio_mono, sr)
         audio_visualize(audio_mono, sr)
         #show_waveform(audio_mono, sr)
         st.write('Get your sample audio segment - under 30 seconds length')
@@ -82,7 +83,7 @@ with tabSecond:
         if activate_sampler == True:
             st.success('Your sample length is legitimate.')
             audio_sample = cut_audio(audio_mono, sr, start_sample, end_sample)
-            play_librosa_audio(audio_sample, sr)
+            #play_librosa_audio(audio_sample, sr)
             audio_visualize(audio_mono, sr)
             main_data = [audio_mono, audio_sample, sr, audio_length, activate_sampler]  
 
