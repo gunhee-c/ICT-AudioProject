@@ -118,8 +118,11 @@ with tab2:
             MBTIinput.append(ans[0])
             ratioinput.append(ans[1])
             index += 1
+
         if st.button("Finished making Effector Chain"):
             chain_processed = True
+            getAudio = phone(audio_sample, sr, 100)
+            audio_visualize(getAudio, sr, "test")
 
 
 
