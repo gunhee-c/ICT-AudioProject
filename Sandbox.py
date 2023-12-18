@@ -101,7 +101,13 @@ with tab1:
     tab1_message()
 
 with tab2:
+    
     chain_processed = False
+    sr = main_data[2]
+    audio_sample = main_data[1]
+    audio_length = main_data[3]
+    audio_mono = main_data[0]
+    
     st.write("Combined Selectbox and Slider Widget")
     MBTIinput = []
     ratioinput = []
