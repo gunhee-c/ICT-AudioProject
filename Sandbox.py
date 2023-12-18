@@ -48,7 +48,7 @@ if response.status_code == 200:
 else:
     st.write("Failed to load audio file.")
 
-main_data= [0,0,0,0,0]
+main_data= [1,1,1,1]
 
 #Dummy Data
 activate_sampler = False
@@ -97,7 +97,7 @@ with tabSecond:
         audio_sample = cut_audio(audio_mono, sr, start_sample, end_sample)
         #play_librosa_audio(audio_sample, sr)
         audio_visualize(audio_sample, sr, "audio_cut")
-        main_data = [audio_mono, audio_sample, sr, audio_length, activate_sampler]  
+        main_data = [audio_mono, audio_sample, sr, audio_length]  
 
 
 if activate_sampler == False:
