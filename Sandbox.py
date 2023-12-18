@@ -168,7 +168,7 @@ with tab3:
                 current_audio = audio_processor(current_audio, sr, ratioinput[i], MBTIinput[i], IR_audio, IR_sr)
                 st.write("Process #" + str(i+1))
                 st.write("Effect: " + MBTIinput[i] + " Ratio: " + str(ratioinput[i]))
-                audio_visualize(audio_sample, sr, f"audioSampleProgress{i+1}")
+                audio_visualize(current_audio, sr, f"audioSampleProgress{i+1}")
             
                 st.write("")
 
