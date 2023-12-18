@@ -31,6 +31,22 @@ def audio_visualize(data, sr, var):
             #st.write('View Audio Waveform')
             show_waveform(data, sr)
 
+def audio_expander(data, sr, var, text):
+
+    keyr = "radio" + var
+    with st.expander(text):
+        play_librosa_audio(data, sr)
+        vis = st.radio("Choose your Visualization mode", ["none","Waveform", "Spectrogram" ], key=keyr)
+        if vis == "none":
+            st.write("Audio Visualization: Disabled")
+        if vis == "Spectrogram":
+            #st.write('View Audio Spectrogram')
+            show_spectrogram(data, sr)
+        elif vis == "Waveform":
+            #st.write('View Audio Waveform')
+            show_waveform(data, sr)
+
+
 def audio_processor(audio, sr, ratio, command, IR_audio, IR_sr):
     #st.write("Hello")
     if command == "I: Phone-effect":
@@ -105,7 +121,8 @@ with tabSecond:
         #How long is the audio
         st.write("Length of the original audio (Seconds): " + str(round(audio_length)) )
         #play_librosa_audio(audio_mono, sr)
-        audio_visualize(audio_mono, sr, "audio_origin")
+        #audio_visualize(audio_mono, sr, "audio_origin")
+        audio_expander(audio_mono, sr, "audio_origin", "Original Audio")
         #show_waveform(audio_mono, sr)
         st.write('Get your sample audio segment - under 30 seconds length')
         st.header('Now cut your sample ( 3 < sec < 30 ):')
