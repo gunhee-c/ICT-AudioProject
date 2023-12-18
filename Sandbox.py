@@ -13,15 +13,20 @@ def create_widget_set(key):
     rat = st.slider("Select a Value", min_value=0, max_value=100, key=f'slider_{key}')
     return [opt,rat]
 
-def audio_visualize(data):
-
-    on = st.toggle('Visualize your Audio')
+def audio_visualize(data, sr):
+    on = st.toggle('Your Audio Image:')
 
     if on:
         st.radio('Feature activated!', ["Waveform", "Spectrogram" ])
-        show_waveform(audio_mono, sr)
-        show_spectrogram(audio_mono, sr)
+        agree = st.checkbox('View Spectrogram')
 
+        if agree:
+            st.write('View Audio Spectrogram')
+            show_spectrogram(data, sr)
+        else:
+            st.write('View Audio Waveform')
+            
+            show_waveform(data, sr)
 
 
 st.title('MBTI AUDIO EFFECTOR PROTOTYPE'':sunglasses:')
@@ -62,7 +67,8 @@ with tabSecond:
         #How long is the audio
         st.write("Length of the original audio (Seconds): " + str(round(audio_length)) )
         play_librosa_audio(audio_mono, sr)
-        show_waveform(audio_mono, sr)
+        audio_visualize(audio_mono, sr)
+        #show_waveform(audio_mono, sr)
         st.write('Get your sample audio segment - under 30 seconds length')
         st.header('Now cut your sample ( 3 < sec < 30 ):')
 
@@ -77,7 +83,7 @@ with tabSecond:
             st.success('Your sample length is legitimate.')
             audio_sample = cut_audio(audio_mono, sr, start_sample, end_sample)
             play_librosa_audio(audio_sample, sr)
-            show_waveform(audio_sample, sr)  
+            audio_visualize(audio_mono, sr)
             main_data = [audio_mono, audio_sample, sr, audio_length, activate_sampler]  
 
 
@@ -85,12 +91,7 @@ tab1, tab2, tab3 = st.tabs(["How to use", "Main", "Export"])
 
 with tab1:
     tab1_message()
-    agree = st.checkbox('I agree')
 
-    if agree:
-        st.write('Great!')
-    else:
-        st.write('Not great!')
 with tab2:
     st.write("Combined Selectbox and Slider Widget")
     MBTIinput = []
