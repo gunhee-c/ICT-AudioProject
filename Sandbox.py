@@ -210,9 +210,8 @@ with tab3:
         
         st.write("The Audio below is your final result")
         current_audio = normalize(current_audio, sr, 1)
-        with st.expander("Check your final result:"):
-            #audio_visualize(current_audio, sr, "audioSampleProgressFinal")
-            audio_expander(current_audio, sr, "audioSampleProgressFinal", "최종 결과(샘플):")
+
+        audio_expander(current_audio, sr, "audioSampleProgressFinal", "최종 결과(샘플):")
 #       
         satisfied = st.checkbox("Are you Satisfied with the result?")
         if satisfied:
@@ -238,9 +237,8 @@ with tab4:
                     current_audio_final = processed_audio_final
             Final_audio = normalize(current_audio_final, sr, 1)
             st.write("Export your audio")
-            with st.expander("Check your final result with whole audio:"):
-                #audio_visualize(Final_audio, sr, "audioProgressFinal")
-                audio_expander(Final_audio, sr, "audioProgressFinal", "최종 결과(전체):")
+
+            audio_expander(Final_audio, sr, "audioProgressFinal", "최종 결과(전체):")
         
             st.write("Do you wish to Download?")
             download = st.checkbox("Download")
