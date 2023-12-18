@@ -5,11 +5,8 @@ matplotlib
 pydub
 noisereduce
 torch
-streamlit-option-menu
 streamlit-extras
 psola 
 noisereduce
 torch 
 scipy
-tempfile
-os

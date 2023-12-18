@@ -245,8 +245,6 @@ with tab4:
             if download:
                 output_file = 'output_audio.wav'
                 sf.write(output_file, Final_audio, sr)
-                st.write("Downloading...")
-
 
                 with open(output_file, "rb") as file:
                     btn = st.download_button(
