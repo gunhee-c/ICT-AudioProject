@@ -48,6 +48,7 @@ if response.status_code == 200:
 else:
     st.write("Failed to load audio file.")
 
+main_data= [0,0,0,0,0]
 
 #Dummy Data
 activate_sampler = False
