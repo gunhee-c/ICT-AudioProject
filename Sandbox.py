@@ -14,19 +14,19 @@ def create_widget_set(key):
     rat = st.slider("Select a Value", min_value=0, max_value=100, key=f'slider_{key}')
     return [opt,rat]
 
-def audio_visualize(data, sr):
-    on = st.toggle('Check your audio!')
+def audio_visualize(data, sr, var):
+    var = st.toggle('Check your audio!')
 
-    if on:
+    if var:
         play_librosa_audio(data, sr)
         vis = st.radio('View Your Audio Image:', ["none","Waveform", "Spectrogram" ])
         if vis == "none":
             st.write("Choose your Visualization mode")
         if vis == "Spectrogram":
-            st.write('View Audio Spectrogram')
+            #st.write('View Audio Spectrogram')
             show_spectrogram(data, sr)
         elif vis == "Waveform":
-            st.write('View Audio Waveform')
+            #st.write('View Audio Waveform')
             show_waveform(data, sr)
 
 
@@ -69,7 +69,7 @@ with tabSecond:
         #How long is the audio
         st.write("Length of the original audio (Seconds): " + str(round(audio_length)) )
         #play_librosa_audio(audio_mono, sr)
-        audio_visualize(audio_mono, sr)
+        audio_visualize(audio_mono, sr, "audio_origin")
         #show_waveform(audio_mono, sr)
         st.write('Get your sample audio segment - under 30 seconds length')
         st.header('Now cut your sample ( 3 < sec < 30 ):')
@@ -85,7 +85,7 @@ with tabSecond:
             st.success('Your sample length is legitimate.')
             audio_sample = cut_audio(audio_mono, sr, start_sample, end_sample)
             #play_librosa_audio(audio_sample, sr)
-            audio_visualize(audio_sample, sr)
+            audio_visualize(audio_sample, sr, "audio_cut")
             main_data = [audio_mono, audio_sample, sr, audio_length, activate_sampler]  
 
 
