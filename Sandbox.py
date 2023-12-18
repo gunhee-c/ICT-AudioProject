@@ -33,28 +33,28 @@ def audio_visualize(data, sr, var):
 
 def audio_processor(audio, sr, ratio, command, IR_audio, IR_sr):
     st.write("Hello")
-    if command == "I:Phone-effect":
+    if command == "I: Phone-effect":
         st.write("Phone Effect on Action")
         return phone(audio, sr, ratio)
-    if command == "E:Add air":
+    if command == "E: Add air":
         st.write("Air Effect on Action")
         return air(audio, sr, ratio)
-    if command == "S:Reverb":
+    if command == "S: Reverb":
         st.write("Reverb Effect on Action")
         return reverb(audio, sr, IR_audio, IR_sr, ratio)
-    if command == "N:Compressor":
+    if command == "N: Compressor":
         st.write("Compressor Effect on Action")
         return compressor(audio, sr, ratio)
-    if command == "F:Octave High":
+    if command == "F: Octave High":
         st.write("Octave High Effect on Action")
         return octHigh(audio, sr, ratio)
-    if command == "T:Octave Low":
+    if command == "T: Octave Low":
         st.write("Octave Low Effect on Action")
         return octLow(audio, sr, ratio)
-    if command == "P:Noise Cancelling":
+    if command == "P: Noise Cancelling":
         st.write("Noise Cancelling Effect on Action")
         return noisereduce(audio, sr, ratio)
-    if command == "J:Autotune":
+    if command == "J: Autotune":
         st.write("Autotune Effect on Action")
         return autotune(audio, sr, ratio)
 
@@ -171,6 +171,7 @@ with tab3:
         current_audio = audio_sample
         audio_visualize(current_audio, sr, "audioSampleProgress0")
         for i in range(index):
+            st.write("MBTIinput[i]:" + MBTIinput[i] + " ratioinput[i]:" + str(ratioinput[i]))
             if MBTIinput[i] != "None":
                 processed_audio = audio_processor(current_audio, sr, ratioinput[i], MBTIinput[i], IR_audio, IR_sr)
                 st.write("Process #" + str(i+1))
