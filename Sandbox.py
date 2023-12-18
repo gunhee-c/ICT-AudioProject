@@ -92,34 +92,35 @@ with tabSecond:
         main_data = [audio_mono, audio_sample, sr, audio_length, activate_sampler]  
 
 
+if activate_sampler == False:
+    st.header("먼저 샘플을 업로드 해주세요")
+
 tab1, tab2, tab3 = st.tabs(["How to use", "Main", "Export"])
 
 with tab1:
-    if activate_sampler == True:
-        st.header('Your Sample Audio:')
     tab1_message()
 
 with tab2:
+    chain_processed = False
     st.write("Combined Selectbox and Slider Widget")
     MBTIinput = []
     ratioinput = []
-
-
-    index = 1
-    for i in range(4):
-        ans = create_widget_set(index)
-        MBTIinput.append(ans[0])
-        ratioinput.append(ans[1])
-        index += 1
-
-         # Add widget button
-    if button('Add Widget', key="button4" ):
-        for i in range(4):
+    numEffects = st.number_input('How many effects do you want to apply?')
+    if numEffects == 0:
+        st.write("Choose at least one effect")
+    elif numEffects > 9:
+        st.write("Choose less than 9 effects")
+    else:
+        st.write("Choose your effects")
+        index = 1
+        for i in range(numEffects):
             ans = create_widget_set(index)
             MBTIinput.append(ans[0])
             ratioinput.append(ans[1])
             index += 1
-            # Remove widget button
+        chain_processed = True
+
+
 
 with tab3:
     st.header("An owl")
