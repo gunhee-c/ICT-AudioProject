@@ -105,7 +105,7 @@ with tab2:
     st.write("Combined Selectbox and Slider Widget")
     MBTIinput = []
     ratioinput = []
-    numEffects = int(st.number_input('How many effects do you want to apply? max: 8'))
+    numEffects = int(st.number_input('How many effects do you want to apply? max: 8', step=1))
     if numEffects == 0 or numEffects < 0:
         st.write("Choose at least one effect")
     elif numEffects > 9:
