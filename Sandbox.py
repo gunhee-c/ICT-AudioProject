@@ -161,13 +161,14 @@ with tab3:
         st.write("Choose your effects first")
     else:
         st.write("Check your Effector Chain step by step:")
-        current_audio = []
-        current_audio.append(audio_sample)
+        #audio_print = [audio_sample]
+        current_audio = audio_sample
         for i in range(index):
-            current_audio.append(audio_processor(audio_sample, sr, ratioinput[i], MBTIinput[i], IR_audio, IR_sr))
-            st.write("Procees #" + str(i+1))
+            current_audio = audio_processor(current_audio, sr, ratioinput[i], MBTIinput[i], IR_audio, IR_sr)
+            st.write("Process #" + str(i+1))
             st.write("Effect: " + MBTIinput[i] + " Ratio: " + str(ratioinput[i]))
-            audio_visualize(current_audio[i+1], sr, f'audioSampleProgress{i+1}')
+            audio_visualize(current_audio, sr, f'audioSampleProgress{i+1}')
+            
             st.write("")
 
         """
