@@ -11,3 +11,5 @@ psola
 noisereduce
 torch 
 scipy
+tempfile
+os

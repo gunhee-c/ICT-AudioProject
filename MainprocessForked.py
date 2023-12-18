@@ -96,6 +96,7 @@ def reverb(audio, sr, impulse_audio, sr_ir, ratio):
 
     if samples_to_trim < len(audio):
         trimmed_audio = audio[:-samples_to_trim]
+        
         trimmed_audio_rev = reverberated_audio[:-samples_to_trim]
     else:
     # Handle case where the audio is shorter than the trim duration

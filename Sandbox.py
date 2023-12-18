@@ -1,7 +1,7 @@
 import streamlit as st
 import librosa as lr
 import numpy as np
-
+import tempfile
 from Preprocess import *
 from MainprocessForked import *
 from TryMath import st_injection
@@ -64,20 +64,20 @@ st.title('MBTI AUDIO EFFECTOR PROTOTYPE'':sunglasses:')
 audio_file_url = 'https://github.com/gunhee-c/ICT-AudioProject/blob/main/Sample_IR.wav?raw=true'
 response = requests.get(audio_file_url)
 if response.status_code == 200:
-    st.audio(response.content, format='audio/wav')
+    #st.audio(response.content, format='audio/wav')
     audio_buffer = io.BytesIO(response.content)
 
     # Load audio data with librosa
     IR_audio, IR_sr = lr.load(audio_buffer, sr=None)  
     IR_length = lr.get_duration(y = IR_audio, sr=IR_sr)
-    st.write(IR_length)
+    #st.write(IR_length)
 else:
     st.write("Failed to load audio file.")
 #main_data= [1,1,1,1]
 
 #Dummy Data
 activate_sampler = False
-
+get_final_result = False
 tabFirst , tabSecond = st.tabs(["MBTI 보컬 이펙터?", "Upload your Audio"])
 
 with tabFirst:
@@ -190,9 +190,52 @@ with tab3:
         
         st.write("The Audio below is your final result")
         current_audio = normalize(current_audio, sr, 1)
-        audio_visualize(current_audio, sr, "audioSampleProgressFinal")
+        with st.expander("Check your final result:"):
+            audio_visualize(current_audio, sr, "audioSampleProgressFinal")
 #       
+        satisfied = st.checkbox("Are you Satisfied with the result?")
+        if satisfied:
+            st.success("Great! Go to the next tab and export your audio")
+            get_final_result = True
+        else:
+            st.error("You can go back to the previous tab and change the effects")
 
+with tab4:
+    if get_final_result == False:
+        st.header("Please confirm your audio chain first.")
+    if get_final_result == True:
+        st.header("Start Exporting your audio")
+        fin = st.checkbox("Let's do it!")
+        if fin == True:
+            st.write("Downloading...")
+            current_audio_final = audio_mono
 
-#"None", "I: Phone-effect", "E: Add air", "S: Reverb", "N: Compressor", 
-#"F: Octave High", "T: Octave Low", "P: Noise Cancelling", "J: Autotune"
+            for i in range(index):
+                if MBTIinput[i] != "None":
+                    processed_audio_final = audio_processor(current_audio_final, sr, ratioinput[i], MBTIinput[i], IR_audio, IR_sr)
+                    normalize(processed_audio_final, sr, 0.5)
+                    current_audio_final = processed_audio_final
+            Final_audio = normalize(current_audio_final, sr, 1)
+            st.write("Export your audio")
+            with st.expander("Check your final result with whole audio:"):
+                audio_visualize(Final_audio, sr, "audioSampleProgressFinal")
+        
+            st.write("Do you wish to Download?")
+            download = st.checkbox("Download")
+            if download:
+                st.write("Downloading...")
+                tmp_path = "processed_audio.wav"
+                lr.output.write_wav(tmp_path, Final_audio, sr)
+
+                with open(tmp_path, "rb") as file:
+                    btn = st.download_button(
+                                                label="Download Audio",
+                                                data=file,
+                                                file_name="processed_audio.wav",
+                                                mime="audio/wav"
+                                            )
+
+                
+                st.write("Download Complete!")
+                st.write("Thank you for using our service!")
+                st.balloons()
