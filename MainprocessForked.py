@@ -91,6 +91,13 @@ def reverb(audio, sr, impulse_audio, sr_ir, ratio):
     # Adjust the wet ratio (replace 'wet_ratio' with the desired value)
     wet_ratio = ratioMod
     audio = pad_to_match(audio, reverberated_audio)
+    duration_to_trim = 10  # Duration to trim (in seconds)
+    samples_to_trim = sr * duration_to_trim
+    if samples_to_trim < len(audio):
+        trimmed_audio = audio[:-samples_to_trim]
+    else:
+    # Handle case where the audio is shorter than the trim duration
+        trimmed_audio = audio
     return (1 - wet_ratio) * audio + wet_ratio * reverberated_audio
 
 def basic_compressor(signal, threshold, ratio):
