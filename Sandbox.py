@@ -162,7 +162,7 @@ with tab3:
     else:
         st.write("Check your Effector Chain step by step:")
         current_audio = []
-        current_audio.append = audio_sample
+        current_audio.append(audio_sample)
         for i in range(index):
             current_audio.append(audio_processor(audio_sample, sr, ratioinput[i], MBTIinput[i], IR_audio, IR_sr))
             st.write("Procees #" + str(i+1))
