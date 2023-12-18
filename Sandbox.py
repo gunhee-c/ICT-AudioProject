@@ -107,7 +107,7 @@ with tab2:
     audio_sample = main_data[1]
     audio_length = main_data[3]
     audio_mono = main_data[0]
-    
+
     st.write("Combined Selectbox and Slider Widget")
     MBTIinput = []
     ratioinput = []
@@ -127,8 +127,7 @@ with tab2:
 
         if st.button("Finished making Effector Chain"):
             chain_processed = True
-            getAudio = phone(audio_sample, sr, 100)
-            audio_visualize(getAudio, sr, "test")
+
 
 
 
@@ -142,6 +141,7 @@ with tab3:
             st.write("")
         st.header("An owl")
         st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
-
+        getAudio = phone(audio_sample, sr, 100)
+        audio_visualize(getAudio, sr, "test")
 
 #
