@@ -32,6 +32,7 @@ def audio_visualize(data, sr, var):
             show_waveform(data, sr)
 
 def audio_processor(audio, sr, ratio, command, IR_audio, IR_sr):
+    st.write("Hello")
     if command == "I:Phone-effect":
         st.write("Phone Effect on Action")
         return phone(audio, sr, ratio)
