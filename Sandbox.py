@@ -21,9 +21,9 @@ def audio_visualize(data, sr, var):
 
     if var:
         play_librosa_audio(data, sr)
-        vis = st.radio('View Your Audio Image:', ["none","Waveform", "Spectrogram" ], key=keyr)
+        vis = st.radio("Choose your Visualization mode", ["none","Waveform", "Spectrogram" ], key=keyr)
         if vis == "none":
-            st.write("Choose your Visualization mode")
+            st.write("Disabled")
         if vis == "Spectrogram":
             #st.write('View Audio Spectrogram')
             show_spectrogram(data, sr)
@@ -38,9 +38,14 @@ st.title('MBTI AUDIO EFFECTOR PROTOTYPE'':sunglasses:')
 audio_file_url = 'https://github.com/gunhee-c/ICT-AudioProject/blob/main/Sample_IR2.wav?raw=true'
 response = requests.get(audio_file_url)
 if response.status_code == 200:
-    st.audio(response.content, format='audio/wav')
+    #st.audio(response.content, format='audio/wav')
+    audio_buffer = io.BytesIO(response.content)
+
+    # Load audio data with librosa
+    IR_audio, IR_sr = lr.load(audio_buffer, sr=None)  
 else:
     st.write("Failed to load audio file.")
+
 
 #Dummy Data
 activate_sampler = False
@@ -143,5 +148,20 @@ with tab3:
         st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
         getAudio = phone(audio_sample, sr, 100)
         audio_visualize(getAudio, sr, "test")
+        getAudio2 = air(audio_sample, sr, 100)
+        audio_visualize(getAudio, sr, "test2")
+        getAudio3 = reverb(audio_sample, sr, IR_audio, IR_sr, 30)
+        audio_visualize(getAudio, sr, "test3")
+        getAudio4 = compressor(audio_sample, sr, 50)
+        audio_visualize(getAudio, sr, "test4")
+        getAudio5 = octHigh(audio_sample, sr, 100)
+        audio_visualize(getAudio, sr, "test5")
+        getAudio6 = octLow(audio_sample, sr, 50)
+        audio_visualize(getAudio, sr, "test6")
+        getAudio7 = noisereduce(audio_sample, sr, 50)
+        audio_visualize(getAudio, sr, "test7")
+        getAudio8 = autotune(audio_sample, sr, 100)
+        audio_visualize(getAudio, sr, "test8")
+
 
 #
