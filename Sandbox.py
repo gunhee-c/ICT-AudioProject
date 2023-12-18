@@ -122,7 +122,7 @@ with tabSecond:
         st.write("Length of the original audio (Seconds): " + str(round(audio_length)) )
         #play_librosa_audio(audio_mono, sr)
         #audio_visualize(audio_mono, sr, "audio_origin")
-        audio_expander(audio_mono, sr, "audio_origin", "Original Audio")
+        audio_expander(audio_mono, sr, "audio_origin", "원본 오디오:")
         #show_waveform(audio_mono, sr)
         st.write('Get your sample audio segment - under 30 seconds length')
         st.header('Now cut your sample ( 3 < sec < 30 ):')
@@ -138,7 +138,7 @@ with tabSecond:
         st.success('Your sample length is legitimate.')
         audio_sample = cut_audio(audio_mono, sr, start_sample, end_sample)
         #play_librosa_audio(audio_sample, sr)
-        audio_visualize(audio_sample, sr, "audio_cut")
+        audio_expander(audio_sample, sr, "audio_cut", "오디오 샘플:")
         #main_data = [audio_mono, audio_sample, sr, audio_length]  
 
 
@@ -188,7 +188,8 @@ with tab3:
         #audio_print = [audio_sample]
         current_audio = audio_sample
         with st.expander("Process #0: Original Audio"):
-            audio_visualize(current_audio, sr, "audioSampleProgress0")
+            #audio_visualize(current_audio, sr, "audioSampleProgress0")
+            audio_expander(current_audio, sr, "audioSampleProgress0", "샘플 원본:")
         st.write("")
         st.write("")
         for i in range(index):
@@ -198,7 +199,9 @@ with tab3:
                 normalize(processed_audio, sr, 0.5)
                 progstr = ("Process #" + str(i+1) + ": " + MBTIinput[i] + " Ratio: " + str(ratioinput[i]))
                 with st.expander(progstr):
-                    audio_visualize(processed_audio, sr, f"audioSampleProgress{i+1}")
+                    
+                    #audio_visualize(processed_audio, sr, f"audioSampleProgress{i+1}")
+                    audio_expander(processed_audio, sr, f"audioSampleProgress{i+1}", progstr)
                 #processed_audio = processed_audio.squeeze() 
                 
                 #audio_visualize(processed_audio, sr, f"audioSampleProgress{i+1}")
@@ -208,7 +211,8 @@ with tab3:
         st.write("The Audio below is your final result")
         current_audio = normalize(current_audio, sr, 1)
         with st.expander("Check your final result:"):
-            audio_visualize(current_audio, sr, "audioSampleProgressFinal")
+            #audio_visualize(current_audio, sr, "audioSampleProgressFinal")
+            audio_expander(current_audio, sr, "audioSampleProgressFinal", "최종 결과(샘플):")
 #       
         satisfied = st.checkbox("Are you Satisfied with the result?")
         if satisfied:
@@ -235,7 +239,8 @@ with tab4:
             Final_audio = normalize(current_audio_final, sr, 1)
             st.write("Export your audio")
             with st.expander("Check your final result with whole audio:"):
-                audio_visualize(Final_audio, sr, "audioProgressFinal")
+                #audio_visualize(Final_audio, sr, "audioProgressFinal")
+                audio_expander(Final_audio, sr, "audioProgressFinal", "최종 결과(전체):")
         
             st.write("Do you wish to Download?")
             download = st.checkbox("Download")
