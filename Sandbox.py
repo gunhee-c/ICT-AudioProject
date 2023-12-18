@@ -35,7 +35,7 @@ def audio_visualize(data, sr, var):
 
 st.title('MBTI AUDIO EFFECTOR PROTOTYPE'':sunglasses:')
 # URL of the raw audio file on GitHub
-audio_file_url = 'https://github.com/gunhee-c/ICT-AudioProject/blob/main/Sample_IR2.wav?raw=true'
+audio_file_url = 'https://github.com/gunhee-c/ICT-AudioProject/blob/main/Sample_IR.wav?raw=true'
 response = requests.get(audio_file_url)
 if response.status_code == 200:
     #st.audio(response.content, format='audio/wav')
