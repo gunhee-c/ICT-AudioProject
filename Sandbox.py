@@ -38,11 +38,13 @@ st.title('MBTI AUDIO EFFECTOR PROTOTYPE'':sunglasses:')
 audio_file_url = 'https://github.com/gunhee-c/ICT-AudioProject/blob/main/Sample_IR.wav?raw=true'
 response = requests.get(audio_file_url)
 if response.status_code == 200:
-    #st.audio(response.content, format='audio/wav')
+    st.audio(response.content, format='audio/wav')
     audio_buffer = io.BytesIO(response.content)
 
     # Load audio data with librosa
     IR_audio, IR_sr = lr.load(audio_buffer, sr=None)  
+    IR_length = lr.get_duration(y = IR_audio, sr=IR_sr)
+    st.write(IR_length)
 else:
     st.write("Failed to load audio file.")
 
@@ -141,6 +143,8 @@ with tab3:
         st.write("Choose your effects first")
     else:
         for i in range(index):
+            st.write("I remember IR")
+            st.write(IR_length)
             st.write(MBTIinput[i])
             st.write(ratioinput[i])
             st.write("")
