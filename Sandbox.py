@@ -64,8 +64,7 @@ if response.status_code == 200:
     st.write(IR_length)
 else:
     st.write("Failed to load audio file.")
-
-main_data= [1,1,1,1]
+#main_data= [1,1,1,1]
 
 #Dummy Data
 activate_sampler = False
@@ -114,7 +113,7 @@ with tabSecond:
         audio_sample = cut_audio(audio_mono, sr, start_sample, end_sample)
         #play_librosa_audio(audio_sample, sr)
         audio_visualize(audio_sample, sr, "audio_cut")
-        main_data = [audio_mono, audio_sample, sr, audio_length]  
+        #main_data = [audio_mono, audio_sample, sr, audio_length]  
 
 
 if activate_sampler == False:
@@ -128,10 +127,8 @@ with tab1:
 with tab2:
     
     chain_processed = False
-    sr = main_data[2]
-    audio_sample = main_data[1]
-    audio_length = main_data[3]
-    audio_mono = main_data[0]
+    
+
 
     st.write("Combined Selectbox and Slider Widget")
     MBTIinput = []
