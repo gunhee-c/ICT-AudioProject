@@ -169,7 +169,7 @@ with tab3:
         st.write("Check your Effector Chain step by step:")
         #audio_print = [audio_sample]
         current_audio = audio_sample
-        with str.epander("Process #0: Original Audio"):
+        with st.epander("Process #0: Original Audio"):
             audio_visualize(current_audio, sr, "audioSampleProgress0")
         for i in range(index):
             #st.write("MBTIinput[i]:" + MBTIinput[i] + " ratioinput[i]:" + str(ratioinput[i]))
