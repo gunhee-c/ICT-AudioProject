@@ -3,7 +3,7 @@ import librosa as lr
 import numpy as np
 
 from Preprocess import *
-from Mainprocess import *
+#from Mainprocess import *
 from TryMath import st_injection
 from dialogue import *
 

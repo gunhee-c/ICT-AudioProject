@@ -6,7 +6,7 @@ import scipy.signal as signal
 import soundfile as sf
 import matplotlib.pyplot as plt
 from scipy.io import wavfile
-import IPython.display as ipd
+#import IPython.display as ipd
 import io
 import noisereduce as nr
 import torch
@@ -14,7 +14,7 @@ import psola
 
 
 
-impulse_response, sr_ir = lr.load(impulse_file)
+#impulse_response, sr_ir = lr.load(impulse_file)
 
 
 # for the case we need non-linear blending
