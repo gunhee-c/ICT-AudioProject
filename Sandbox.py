@@ -23,7 +23,7 @@ def audio_visualize(data, sr, var):
         play_librosa_audio(data, sr)
         vis = st.radio("Choose your Visualization mode", ["none","Waveform", "Spectrogram" ], key=keyr)
         if vis == "none":
-            st.write("Disabled")
+            st.write("Audio Visualization: Disabled")
         if vis == "Spectrogram":
             #st.write('View Audio Spectrogram')
             show_spectrogram(data, sr)

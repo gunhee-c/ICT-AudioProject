@@ -145,7 +145,7 @@ def noisereduce(y,sr, ratio):
 # Convert the floating-point audio data to 16-bit PCM format for WAV file
     y_16bit = np.int16(y / np.max(np.abs(y)) * 32767)
 
-    reduced_noise = nr.reduce_noise(y=y, sr=sr, prop_decrease = ratioMod)
+    reduced_noise = nr.reduce_noise(y=y_16bit, sr=sr, prop_decrease = ratioMod)
     data_float = reduced_noise.astype(np.float32) / 32768.0  # 16-bit PCM
     return data_float
 
