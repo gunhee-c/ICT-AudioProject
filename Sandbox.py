@@ -105,8 +105,8 @@ with tab2:
     st.write("Combined Selectbox and Slider Widget")
     MBTIinput = []
     ratioinput = []
-    numEffects = int(st.number_input('How many effects do you want to apply?'))
-    if numEffects == 0:
+    numEffects = int(st.number_input('How many effects do you want to apply? max: 8'))
+    if numEffects == 0 or numEffects < 0:
         st.write("Choose at least one effect")
     elif numEffects > 9:
         st.write("Choose less than 9 effects")
@@ -118,13 +118,21 @@ with tab2:
             MBTIinput.append(ans[0])
             ratioinput.append(ans[1])
             index += 1
-        chain_processed = True
+        if st.button("Finished making Effector Chain"):
+            chain_processed = True
 
 
 
 with tab3:
-    st.header("An owl")
-    st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
+    if chain_processed == False:
+        st.write("Choose your effects first")
+    else:
+        for i in range(index):
+            st.write(MBTIinput[i])
+            st.write(ratioinput[i])
+            st.write("")
+        st.header("An owl")
+        st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
 
 
 #
