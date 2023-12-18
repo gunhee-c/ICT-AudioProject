@@ -187,9 +187,8 @@ with tab3:
         st.write("Check your Effector Chain step by step:")
         #audio_print = [audio_sample]
         current_audio = audio_sample
-        with st.expander("Process #0: Original Audio"):
-            #audio_visualize(current_audio, sr, "audioSampleProgress0")
-            audio_expander(current_audio, sr, "audioSampleProgress0", "샘플 원본:")
+
+        audio_expander(current_audio, sr, "audioSampleProgress0", "샘플 원본:")
         st.write("")
         st.write("")
         for i in range(index):
@@ -198,10 +197,9 @@ with tab3:
                 processed_audio = audio_processor(current_audio, sr, ratioinput[i], MBTIinput[i], IR_audio, IR_sr)
                 normalize(processed_audio, sr, 0.5)
                 progstr = ("Process #" + str(i+1) + ": " + MBTIinput[i] + " Ratio: " + str(ratioinput[i]))
-                with st.expander(progstr):
-                    
+
                     #audio_visualize(processed_audio, sr, f"audioSampleProgress{i+1}")
-                    audio_expander(processed_audio, sr, f"audioSampleProgress{i+1}", progstr)
+                audio_expander(processed_audio, sr, f"audioSampleProgress{i+1}", progstr)
                 #processed_audio = processed_audio.squeeze() 
                 
                 #audio_visualize(processed_audio, sr, f"audioSampleProgress{i+1}")
