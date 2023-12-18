@@ -6,6 +6,17 @@ from Preprocess import *
 from MainprocessForked import *
 from TryMath import st_injection
 from dialogue import *
+import psutil
+
+
+def get_memory_usage():
+    memory = psutil.virtual_memory()
+    total_memory = memory.total / (1024 ** 3)  # Convert bytes to GB
+    used_memory = memory.used / (1024 ** 3)    # Convert bytes to GB
+    memory_percentage = memory.percent
+    return total_memory, used_memory, memory_percentage
+
+total_memory, used_memory, memory_percentage = get_memory_usage()
 
 def create_widget_set(key):
     opt = st.selectbox('Which effect will you choose: ', ["None", "I: Phone-effect", "E: Add air", "S: Reverb", "N: Compressor", 
@@ -237,7 +248,10 @@ with tab4:
             st.write("Export your audio")
 
             audio_expander(Final_audio, sr, "audioProgressFinal", "최종 결과(전체):")
-        
+            # Display the memory usage in the Streamlit app
+            st.write(f"Total Memory: {total_memory:.2f} GB")
+            st.write(f"Used Memory: {used_memory:.2f} GB")
+            st.write(f"Memory Usage: {memory_percentage}%")
             st.write("Do you wish to Download?")
 
             download = st.checkbox("Download")

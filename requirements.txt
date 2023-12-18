@@ -10,3 +10,4 @@ psola
 noisereduce
 torch 
 scipy
+psutil
